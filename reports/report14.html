@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical History</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .table2 {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-collapse: collapse;
+      }
+
+      .table2 th,
+      .table2 td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .fw-bold {
+        font-weight: bold;
+      }
+
+      .btn-style {
+        font-size: 0.9rem;
+        padding: 4px 10px;
+      }
+      .content p {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+    </style>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+      }
+
+      table tbody tr th {
+        font-weight: 400;
+      }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .health-table-section {
+        margin-top: 20px;
+      }
+
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+
+      canvas {
+        margin-bottom: 40px;
+      }
+
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+
+        p {
+          font-weight: 500;
+        }
+      }
+
+      .details,
+      .content {
+        margin-top: 20px;
+      }
+
+      .content h3 {
+        text-align: center;
+        margin: 10px 0;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .footer {
+        margin-top: 80px;
+        font-size: 14px;
+      }
+
+      hr {
+        margin-top: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center fw-bold mb-4">
+        FINANCIAL INFORMATION AND CONSENT FORM
+      </h2>
+
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <h2 class="form-subtitle">MEDICOVER PANEL FOR WIFE</h2> -->
+      <div class="slidx">
+        <table class="table table-bordered">
+          <!-- Previous sections remain the same up to RBC and Platelet Indices -->
+
+          <thead>
+            <tr>
+              <th colspan="5">Mean Platelet and WBC Differential Count</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Mean Platelet Volume</td>
+            <td>12.7</td>
+            <td colspan="2">High 6.8 - 10.9</td>
+            <td>fL</td>
+          </tr>
+          <tr>
+            <td>Segmented Neutrophils</td>
+            <td>65</td>
+            <td colspan="2">40 - 80</td>
+            <td>%</td>
+          </tr>
+          <tr>
+            <td>Absolute Neutrophil Count</td>
+            <td>3.90</td>
+            <td colspan="2">2.0 - 7.0</td>
+            <td>thou/μL</td>
+          </tr>
+          <tr>
+            <td>Eosinophils</td>
+            <td>02</td>
+            <td colspan="2">1 - 6</td>
+            <td>%</td>
+          </tr>
+          <tr>
+            <td>Absolute Eosinophil Count</td>
+            <td>0.12</td>
+            <td colspan="2">0.02 - 0.50</td>
+            <td>thou/μL</td>
+          </tr>
+          <tr>
+            <td>Lymphocytes</td>
+            <td>29</td>
+            <td colspan="2">20 - 40</td>
+            <td>%</td>
+          </tr>
+          <tr>
+            <td>Absolute Lymphocyte Count</td>
+            <td>1.74</td>
+            <td colspan="2">1.0 - 3.0</td>
+            <td>thou/μL</td>
+          </tr>
+          <tr>
+            <td>Monocytes</td>
+            <td>04</td>
+            <td colspan="2">2 - 10</td>
+            <td>%</td>
+          </tr>
+          <tr>
+            <td>Absolute Monocyte Count</td>
+            <td>0.24</td>
+            <td colspan="2">0.2 - 1.0</td>
+            <td>thou/μL</td>
+          </tr>
+          <tr>
+            <td>Basophils</td>
+            <td>00</td>
+            <td colspan="2">0 - 2</td>
+            <td>%</td>
+          </tr>
+          <tr>
+            <td>Absolute Basophil Count</td>
+            <td>0</td>
+            <td colspan="2">Low 0.02 - 0.10</td>
+            <td>thou/μL</td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">TSH 3rd Generation Ultra (TSH3 - UL), Serum</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>TSH 3RD Generation</td>
+            <td>2.160</td>
+            <td colspan="2">0.27 - 4.20</td>
+            <td>μIU/mL</td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">AMH / MIS, Serum</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Anti-Mullerian Hormone / Mullerian Inhibiting Subs</td>
+            <td>2.92</td>
+            <td colspan="2">0.672 - 7.550</td>
+            <td>ng/mL</td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">Prolactin, Serum</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>Prolactin</td>
+            <td>37.69</td>
+            <td colspan="2">High 4.79 - 23.3</td>
+            <td>ng/mL</td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">ABO Group & RH Type, EDTA Whole Blood</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>ABO Group</td>
+            <td colspan="3">TYPE O</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>RH Type</td>
+            <td colspan="3">POSITIVE</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="content mt-4">
+        <p><strong>Interpretation(s):</strong> <br /></p>
+
+        <p>
+          GLUCOSE RANDOM, PLASMA - As per ADA Guidelines 2012, a random plasma
+          glucose ≥200 mg/dL, in a patient with classic symptoms of
+          hyperglycemia or hyperglycemic crises, is diagnostic of diabetes.
+        </p>
+        <p>
+          HIV 4TH GEN ASSAY (p24Ag/HIV Ab), SERUM - Acquired Immunodeficiency
+          syndrome (AIDS) is caused by 2 types of human immunodeficiency
+          viruses, collectively designated HIV. HIV is transmitted by sexual
+          contact, exposure to blood or blood products, and prenatal infection
+          of a fetus or perinatal infection of a newborn. Phylogenetic analysis
+          classifies HIV-1 into groups M (major), N (non-M, non-O), and O
+          (outlier). HIV-2 is similar to HIV-1 in its structural morphology,
+          genomic organization, cell tropism, in vitro cytopathogenicity,
+          transmission routes, and ability to cause AIDS. However, HIV-2 is less
+          pathogenic than HIV-1. HIV-2 infections have a longer latency period
+          with slower progression to disease, lower viral titers, and lower
+          rates of vertical and horizontal transmission. HIV-2 is endemic to
+          West Africa but HIV-2 infections, less frequently compared to HIV-1,
+          have been identified in the USA, Europe, Asia, and other regions of
+          the world. India predominantly has HIV-1 subtype C.
+        </p>
+        <p>Test Utility</p>
+        <p>
+          The test is used as an aid in the diagnosis of HIV-1/HIV-2 infection.
+          <br />
+          If a reactive result is obtained, confirmation of HIV antibody status
+          is done using 2 more antibody tests.
+        </p>
+        <p>Limitations:</p>
+        <p>
+          Antibody tests may give false negatives during the window period, an
+          interval of 3 weeks to 6 months between the time of HIV infection and
+          the production of antibodies to HIV. Seroconversion. Most people
+          develop detectable antibodies approximately 30 days after infection,
+          although some seroconvert later. The west people (97%) have detectable
+          antibodies by three months after HIV infection. A 6-month window is
+          extremely rare with modern antibody testing.  
+        </p>
+      </div>
+    </div>
+  </body>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>

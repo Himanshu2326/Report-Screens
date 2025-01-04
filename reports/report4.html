@@ -1,428 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Report 4</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        .table2 {
-            width: 100%;
-            border: 1px solid #dee2e6;
-            border-collapse: collapse;
-        }
+      .table2 {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-collapse: collapse;
+      }
 
-        .table2 th,
-        .table2 td {
-            border: 1px solid #dee2e6;
-            padding: 8px;
-            text-align: left;
-        }
+      .table2 th,
+      .table2 td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
 
-        .fw-bold {
-            font-weight: bold;
-        }
+      .fw-bold {
+        font-weight: bold;
+      }
 
-        .btn-style {
-            font-size: 0.9rem;
-            padding: 4px 10px;
-        }
+      .btn-style {
+        font-size: 0.9rem;
+        padding: 4px 10px;
+      }
     </style>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* font-family: Arial, sans-serif; */
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
 
-        body {
-            font-family: "Montserrat", sans-serif;
-        }
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
 
-        h1 {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 600;
-            /* Use different weights based on your need */
-        }
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 145px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+      }
+
+      table tbody tr th {
+        font-weight: 400;
+      }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .health-table-section {
+        margin-top: 20px;
+      }
+
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+
+      canvas {
+        margin-bottom: 40px;
+      }
+
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
 
         p {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 400;
+          font-weight: 500;
         }
+      }
 
-        .container {
-            padding: 20px;
-        }
+      .details,
+      .content {
+        margin-top: 20px;
+      }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .content h3 {
+        text-align: center;
+        margin: 10px 0;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
 
-        .left-section {
-            font-size: 14px;
-        }
+      .footer {
+        margin-top: 80px;
+        font-size: 14px;
+      }
 
-        .left-section p {
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        .left-section span {
-            font-weight: bold;
-        }
-
-        .logo-section {
-            margin-left: 140px;
-            margin-top: -30px;
-        }
-
-        .logo-section {
-            margin-left: 145px;
-            margin-top: -30px;
-        }
-
-        .logo-section {
-            text-align: center;
-        }
-
-        .logo-section img {
-            width: 350px;
-            height: auto;
-        }
-
-        label {
-            display: inline-block;
-            font-size: 16px;
-            font-weight: 600;
-            color: #160647;
-        }
-
-        table thead tr th {
-            background: #f2f2f2 !important;
-        }
-
-        table tbody tr th {
-            font-weight: 400;
-        }
-
-        .td-width {
-            width: 60%;
-        }
-
-        .right-section {
-            text-align: right;
-            font-size: 14px;
-        }
-
-        .right-section p {
-            margin-bottom: 5px;
-        }
-
-        .right-section strong {
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .details-section {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .details-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 40px;
-            padding: 10px 0;
-        }
-
-        .details-left,
-        .details-right {
-            flex: 1;
-            display: flex;
-            gap: 10px;
-            justify-content: space-between;
-        }
-
-        .details-left p,
-        .details-right p {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .details-left span,
-        .details-right span {
-            font-weight: bold;
-            margin-left: 10px;
-            color: #646363;
-            border-bottom: #8d8b8b 1px solid;
-            flex: 1;
-        }
-
-        .health-table-section {
-            margin-top: 20px;
-        }
-
-        .sample-info-left,
-        .sample-info-right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .sample-info-left p,
-        .sample-info-right p {
-            font-size: 15px;
-            color: #444;
-            /* margin-bottom: 5px; */
-            font-weight: 600;
-        }
-
-        .sample-info-left span,
-        .sample-info-right span {
-            margin-left: 10px;
-            font-weight: 500;
-            color: #646363;
-        }
-
-        .chart-container {
-            width: 100%;
-            max-width: 300px;
-            margin: auto;
-            max-height: auto;
-        }
-
-        canvas {
-            margin-bottom: 40px;
-        }
-
-        .bar-chart {
-            height: 400px;
-            margin-bottom: 0;
-        }
-
-        .doctor-name {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 60px 0;
-
-            p {
-                font-weight: 500;
-            }
-        }
-
-        .details,
-        .content {
-            margin-top: 20px;
-        }
-
-        .content h3 {
-            text-align: center;
-            margin: 10px 0;
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-
-        .footer {
-            margin-top: 80px;
-            font-size: 14px;
-        }
-
-        hr{
-            margin-top: 70px;
-        }
+      hr {
+        margin-top: 70px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container mt-4">
-        <h2 class="text-center fw-bold mb-4"></h2>
+      <h2 class="text-center fw-bold mb-4"></h2>
 
-        <header class="header-container">
-            <div class="left-section">
-                <p>Date: <span id="formattedDate"></span></p>
-            </div>
-            <div class="logo-section">
-                <img src="../images/logo.png" alt="lifelinkr Logo" />
-            </div>
-            <div class="right-section">
-                <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
-                <p>CLINIC ADDRESS STREET,</p>
-                <p>CLINIC ADDRESS , CITY AND PINCODE</p>
-                <p>Phone No.: 9898988322</p>
-            </div>
-        </header>
-
-
-        <!-------Patient Details Section-------->
-        <div class="details-section mb-4">
-            <div class="details-row">
-                <div class="details-left">
-                    <p>Patient Name:</p>
-                    <span id="patientName"></span>
-                </div>
-                <div class="details-right">
-                    <p>Patient MRN:</p>
-                    <span id="patientMRN"></span>
-                </div>
-            </div>
-            <div class="details-row">
-                <div class="details-left">
-                    <p>Age:</p>
-                    <span id="patientAge"></span>
-                </div>
-                <div class="details-right">
-                    <p>Gender:</p>
-                    <span id="patientGender"></span>
-                </div>
-            </div>
-            <div class="details-row">
-                <div class="details-left">
-                    <p>Lab No.</p>
-                    <span id="assignedCounselor"></span>
-                </div>
-                <div class="details-left">
-                    <p>Ref By:</p>
-                    <span id=""></span>
-                </div>
-            </div>
-
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
         </div>
-
-
-
-        <div id="" class="slidx">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Test Name</th>
-                        <th>Result</th>
-                        <th>Unit</th>
-                        <th>Ref Range</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="4"><strong>Semen Examination</strong></td>
-                    </tr>
-
-                    <tr>
-                        <th>-COLOUR</th>
-                        <th>Creamy</th>
-                        <th></th>
-                        <th>Creamy</th>
-                    </tr>
-
-                    <tr>
-                        <th>-VOLUME</th>
-                        <th>1.0</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-
-                    <tr>
-                        <th>-REACTION</th>
-                        <th>Alkaline</th>
-                        <th></th>
-                        <th>Alkaline</th>
-                    </tr>
-
-                    <tr>
-                        <th>-LIQUIFICATION TIME</th>
-                        <th>30</th>
-                        <th>min</th>
-                        <th>10-30</th>
-                    </tr>
-
-                    <tr>
-                        <th>-SPERM COUNT</th>
-                        <th>73</th>
-                        <th>Million/ml</th>
-                        <th>15-150</th>
-                    </tr>
-
-                    
-                    <tr>
-                        <th>-MOTILITY (AFTER 30 min)</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-
-                    
-                    <tr>
-                        <th>-ACTIVE</th>
-                        <th>30</th>
-                        <th>%</th>
-                        <th></th>
-                    </tr>
-
-                    
-                    <tr>
-                        <th>-SLUGGISH</th>
-                        <th>60</th>
-                        <th>%</th>
-                        <th></th>
-                    </tr>
-
-                    
-                    <tr>
-                        <th>-NON- MOTILE</th>
-                        <th>10</th>
-                        <th>%</th>
-                        <th></th>
-                    </tr>
-
-                    <tr>
-                        <th>-MORPHOLOGY</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-
-                    <tr>
-                        <th>-NORMAL</th>
-                        <th>70-80</th>
-                        <th>%</th>
-                        <th></th>
-                    </tr>
-
-                    <tr>
-                        <th>-PUS-CELLS</th>
-                        <th>1-3</th>
-                        <th>/HPF</th>
-                        <th>NIL</th>
-                    </tr>
-
-
-
-                </tbody>
-            </table>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
         </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
 
-        <!-- <div class="footer" style="display: flex; justify-content: end;">
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="" class="slidx">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Test Name</th>
+              <th>Result</th>
+              <th>Unit</th>
+              <th>Ref Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="4"><strong>Semen Examination</strong></td>
+            </tr>
+
+            <tr>
+              <th>-COLOUR</th>
+              <th>Creamy</th>
+              <th></th>
+              <th>Creamy</th>
+            </tr>
+
+            <tr>
+              <th>-VOLUME</th>
+              <th>1.0</th>
+              <th></th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-REACTION</th>
+              <th>Alkaline</th>
+              <th></th>
+              <th>Alkaline</th>
+            </tr>
+
+            <tr>
+              <th>-LIQUIFICATION TIME</th>
+              <th>30</th>
+              <th>min</th>
+              <th>10-30</th>
+            </tr>
+
+            <tr>
+              <th>-SPERM COUNT</th>
+              <th>73</th>
+              <th>Million/ml</th>
+              <th>15-150</th>
+            </tr>
+
+            <tr>
+              <th>-MOTILITY (AFTER 30 min)</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-ACTIVE</th>
+              <th>30</th>
+              <th>%</th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-SLUGGISH</th>
+              <th>60</th>
+              <th>%</th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-NON- MOTILE</th>
+              <th>10</th>
+              <th>%</th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-MORPHOLOGY</th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-NORMAL</th>
+              <th>70-80</th>
+              <th>%</th>
+              <th></th>
+            </tr>
+
+            <tr>
+              <th>-PUS-CELLS</th>
+              <th>1-3</th>
+              <th>/HPF</th>
+              <th>NIL</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- <div class="footer" style="display: flex; justify-content: end;">
             <div>Signature</div>
         </div> -->
 
-        <hr>
-        <div class="note">
-            <p><strong>Note:</strong> If the results of the test(s) are alarming or unexpected, the patient is advised
-                to contact the laboratory immediately for possible medical advice.</p>
-            <p>Results pertain to the specimen submitted.</p>
-        </div>
+      <hr />
+      <div class="note">
+        <p>
+          <strong>Note:</strong> If the results of the test(s) are alarming or
+          unexpected, the patient is advised to contact the laboratory
+          immediately for possible medical advice.
+        </p>
+        <p>Results pertain to the specimen submitted.</p>
+      </div>
     </div>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+  </body>
 </html>

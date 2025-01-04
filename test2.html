@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical History</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .table2 {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-collapse: collapse;
+      }
+
+      .table2 th,
+      .table2 td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .fw-bold {
+        font-weight: bold;
+      }
+
+      .btn-style {
+        font-size: 0.9rem;
+        padding: 4px 10px;
+      }
+      .content p {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+    </style>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+      }
+
+      table tbody tr th {
+        font-weight: 400;
+      }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .health-table-section {
+        margin-top: 20px;
+      }
+
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+
+      canvas {
+        margin-bottom: 40px;
+      }
+
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+
+        p {
+          font-weight: 500;
+        }
+      }
+
+      .details,
+      .content {
+        margin-top: 20px;
+      }
+
+      .content h3 {
+        text-align: center;
+        margin: 10px 0;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .footer {
+        margin-top: 80px;
+        font-size: 14px;
+      }
+
+      hr {
+        margin-top: 70px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center fw-bold mb-4">
+        FINANCIAL INFORMATION AND CONSENT FORM
+      </h2>
+
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="form-subtitle">MEDICOVER PANEL FOR HUSBAND</h2>
+      <div class="slidx">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th colspan="5">ABO Group & RH Type, EDTA Whole Blood</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>ABO Group</td>
+            <td colspan="3">TYPE A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>RH Type</td>
+            <td colspan="3">POSITIVE</td>
+            <td></td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">HIV 4TH GEN ASSAY (P24AG + HIV AB), SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>HIV 4TH GEN ASSAY (P24AG + HIV AB)</td>
+            <td colspan="3">NON REACTIVE</td>
+            <td></td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">HEPATITIS B SURFACE ANTIGEN, SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>HEPATITIS B SURFACE ANTIGEN</td>
+            <td colspan="3">NON REACTIVE</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PATIENT VALUE</td>
+            <td colspan="3">0.49</td>
+            <td>IU/mL</td>
+          </tr>
+          <tr>
+            <td colspan="5">
+              Ref. ranges for Electrochemiluminescence: < 0.90 (Non Reactive) or
+              > or = 1.00 (Reactive)
+            </td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">HEPATITIS C ANTIBODIES, SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>HEPATITIS C ANTIBODIES</td>
+            <td colspan="3">NON REACTIVE</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PATIENT VALUE</td>
+            <td colspan="3">0.07</td>
+            <td>IU/mL</td>
+          </tr>
+          <tr>
+            <td colspan="5">
+              Ref. ranges for Electrochemiluminescence: < 0.90 (Non Reactive) or
+              > or = 1.00 (Reactive)
+            </td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">VDRL, SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>VDRL</td>
+            <td colspan="3">NONREACTIVE</td>
+            <td>TITER</td>
+          </tr>
+        </table>
+      </div>
+      <div class="content mt-4">
+        <p><strong>Interpretation(s):</strong> <br /></p>
+
+        <p>
+          ABO GROUP & RH TYPE, EDTA WHOLE BLOOD: Blood group is identified by
+          antigens and antibodies present in the blood. Antigens are protein
+          molecules found on the surface of red blood cells. Antibodies are
+          found in plasma. To determine blood group, red cells are mixed with
+          different antibody solutions to give A, B, O or AB.
+        </p>
+        <p>
+          Disclaimer: "Please note, as the results of previous ABO andRh group
+          (Blood Group) for pregnant women are not available, please check with
+          the patient records for availability of the same."  
+        </p>
+        <p>
+          The test is performed by both forward as well as reverse grouping
+          methods.  
+        </p>
+        <p>
+          HIV 4TH GEN ASSAY (P24AG + HIV AB), SERUM: Acquired Immunodeficiency
+          syndrome (AIDS) is caused by 2 types of human immunodeficiency
+          viruses, collectively designated HIV. HIV is transmitted by sexual
+          contact, exposure to blood or blood products, and prenatal infection
+          of a fetus or perinatal infection of a newborn.
+        </p>
+
+        <p>
+          Phylogenetic analysis classifies HIV-1 into groups M (major), N
+          (non-M, non-O), and O (outlier). HIV-2 is similar to HIV-1 in its
+          structural morphology, genomic organization, cell tropism, in vitro
+          cytopathogenicity, transmission routes, and ability to cause AIDS.
+          However, HIV-2 is less pathogenic than HIV-1. HIV-2 infections have a
+          longer period with slower progression to disease, lower viral titers,
+          and lower rates of vertical and horizontal transmission. HIV-2 is
+          endemic to West Africa but HIV-2 infections, although low frequency
+          compared to HIV-1, have been identified in the USA, Europe, Asia, and
+          other regions of Africa. India predominantly has HIV-1, M subtype C.
+        </p>
+      </div>
+    </div>
+  </body>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>

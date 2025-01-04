@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diagnostic Report</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 225px;
+        margin-top: -30px;
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .table thead tr th {
+        background: #f2f2f2 !important;
+        font-weight: 600;
+        padding: 8px;
+        border: 1px solid #dee2e6;
+      }
+
+      .table tbody tr td {
+        padding: 8px;
+        border: 1px solid #dee2e6;
+      }
+
+      .table tbody tr th {
+        font-weight: 400;
+      }
+
+      .section h3 {
+        text-align: center;
+        margin: 30px 0;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .content {
+        margin-top: 20px;
+      }
+
+      .doctor-name {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+        margin-top: 100px;
+      }
+
+      .doctor-name p {
+        font-weight: 500;
+      }
+
+      .test-report-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border: 1px solid #000;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .test-report-header p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .test-report-header .status {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center fw-bold mb-4">DIAGNOSTIC REPORT</h2>
+
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-report-header">
+        <p>Test Report Status: <span class="status">Final</span></p>
+        <p>Results</p>
+        <p>Biological Reference Interval</p>
+        <p>Units</p>
+      </div>
+
+      <div class="section">
+        <h3>CONDITIONS OF LABORATORY TESTING & REPORTING</h3>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>1.</td>
+              <td>
+                It is presumed that the test sample belongs to the patient named
+                or identified in the test requisition form.
+              </td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td>
+                All Tests are performed and reported as per the turnaround time
+                stated in the SRL Directory of services (DOS).
+              </td>
+            </tr>
+            <tr>
+              <td>3.</td>
+              <td>
+                SRL confirms that all tests have been performed or assayed with
+                highest quality standards, clinical safety & technical
+                integrity.
+              </td>
+            </tr>
+            <tr>
+              <td>4.</td>
+              <td>
+                A requested test might not be performed if:
+                <ul>
+                  <li>Specimen received is insufficient or inappropriate</li>
+                  <li>Specimen quality is unsatisfactory</li>
+                  <li>Incorrect specimen type</li>
+                  <li>
+                    Request for testing is withdrawn by the ordering doctor or
+                    patient
+                  </li>
+                  <li>
+                    There is a discrepancy between the label on the specimen
+                    container and the name on the test requisition form
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>5.</td>
+              <td>
+                The results of a laboratory test are dependent on the quality of
+                the sample as well as the assay technology.
+              </td>
+            </tr>
+            <tr>
+              <td>6.</td>
+              <td>
+                Result delays could be because of uncontrolled circumstances,
+                e.g. assay run failure.
+              </td>
+            </tr>
+            <tr>
+              <td>7.</td>
+              <td>
+                Tests parameters marked by asterisks are excluded from the
+                "scope" of NABL accredited tests. (If laboratory is accredited)
+              </td>
+            </tr>
+            <tr>
+              <td>8.</td>
+              <td>
+                Laboratory results should be correlated with clinical
+                information to determine Final diagnosis.
+              </td>
+            </tr>
+            <tr>
+              <td>9.</td>
+              <td>Test results are not valid for Medico-legal purposes.</td>
+            </tr>
+            <tr>
+              <td>10.</td>
+              <td>
+                In case of queries or unexpected test results please call at SRL
+                customer care (Toll free: 1800-222-000). Post proper
+                investigation repeat analysis may be carried out.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="content mt-4">
+          <p>SRL Limited</p>
+          <p>Fortis Hospital, Sector 62, Phase VIII, Mohali 160062</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
