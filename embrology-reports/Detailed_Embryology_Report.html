@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Report</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600; /* Use different weights based on your need */
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section {
+        margin-left: 125px;
+        margin-top: -30px;
+      }
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+      }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .health-table-section {
+        margin-top: 20px;
+      }
+
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+
+      canvas {
+        margin-bottom: 40px;
+      }
+
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+
+        p {
+          font-weight: 500;
+        }
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center fw-bold mb-4">DETAILED EMBRYOLOGY REPORT</h2>
+
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Assigned Counselor:</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-right">
+            <p>Financial Counseling Date:</p>
+            <span id="financialCounselingDate"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Assigned Doctor:</p>
+            <span id="assignedDoctor"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cycle Details -->
+      <h4><strong>Cycle Details</strong></h4>
+      <table class="table table-bordered mb-4">
+        <tbody>
+          <tr>
+            <th>Type of Cycle</th>
+            <td id="typeOfCycle"></td>
+          </tr>
+          <tr>
+            <th>Stimulation Protocol</th>
+            <td id="stimulationProtocol"></td>
+          </tr>
+
+          <tr>
+            <th>Trigger Type</th>
+            <td id="triggerMedication"></td>
+          </tr>
+          <tr>
+            <th>Date of Retrieval</th>
+            <td id="retrievalDate"></td>
+          </tr>
+          <tr>
+            <th>Number of Oocytes Retrieved</th>
+            <td id="numOocytes"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Fertilization Details -->
+      <h4><strong>Fertilization Details</strong></h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Fertilization Method</th>
+            <th>Number of Oocytes</th>
+            <th>Fertilization Rate (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Conventional IVF</td>
+            <td id="ivfCount"></td>
+            <td id="ivfRate"></td>
+          </tr>
+          <tr>
+            <td>ICSI</td>
+            <td id="icsiCount"></td>
+            <td id="icsiRate"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Chart: Fertilization Methods -->
+      <h5 class="mt-4">Fertilization Methods vs Oocytes Fertilized</h5>
+
+      <div class="d-flex justify-content-center">
+        <div style="width: 50%; height: auto">
+          <canvas id="fertilizationChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Embryo Development -->
+
+      <h4><strong>Embryo Development</strong></h4>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th contenteditable="true">Embryo No.</th>
+            <th contenteditable="true">Grade</th>
+            <th contenteditable="true">Computed Grade</th>
+            <th contenteditable="true">Stage</th>
+            <th contenteditable="true">ICM</th>
+            <!-- <th contenteditable="true">Trofect</th> -->
+            <th contenteditable="true">No. of Cells</th>
+            <th contenteditable="true">% Frag</th>
+            <th contenteditable="true">Final Embryo State</th>
+          </tr>
+        </thead>
+        <tbody id="reportData_Id"></tbody>
+      </table>
+
+      <!-- Chart: Embryo Development -->
+      <h4 class="mt-4"><strong>Embryo Development Over Time</strong></h4>
+      <div class="d-flex justify-content-center">
+        <div style="width: 50%; height: auto">
+          <canvas id="embryoChart"></canvas>
+        </div>
+      </div>
+
+      <!-- ashu -->
+
+      <label class="myo-left-right mt-2">Embryo Information</label>
+      <div id="embryoInfoContainer" class="slidx">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Embryo Number</th>
+              <th>Grade</th>
+            </tr>
+          </thead>
+          <tbody id="embryoTableBody">
+            <!-- Data will be dynamically inserted here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ashu -->
+      <!-- Freezing and Transfer Details -->
+      <h4 class="mt-4"><strong>Freezing and Transfer Details</strong></h4>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Embryos Transferred</th>
+            <td id="emb_tansfered_id"></td>
+          </tr>
+          <tr>
+            <th>Date of Transfer</th>
+            <td id="et_date_id"></td>
+          </tr>
+          <tr>
+            <th>Embryo Grade at Transfer</th>
+            <td id="embryo-grade"></td>
+          </tr>
+          <tr>
+            <th>Embryos Frozen</th>
+            <td id="embryos-frozen"></td>
+          </tr>
+          <tr>
+            <th>Cryopreservation Method</th>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Chart.js Configuration -->
+    <script>
+      // Fertilization Chart
+      const ctx1 = document
+        .getElementById("fertilizationChart")
+        .getContext("2d");
+      new Chart(ctx1, {
+        type: "bar",
+        data: {
+          labels: ["Conventional IVF", "ICSI"],
+          datasets: [
+            {
+              label: "Number of Oocytes Fertilized",
+              data: [8, 12], // Replace with dynamic data
+              backgroundColor: ["#77C3EC", "#FF6B6B"],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      // Embryo Development Chart
+      const ctx2 = document.getElementById("embryoChart").getContext("2d");
+      new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: ["Day 1", "Day 2", "Day 3", "Day 5/6"],
+          datasets: [
+            {
+              label: "Number of Embryos",
+              data: [10, 8, 6, 4], // Replace with dynamic data
+              borderColor: "#28A745",
+              backgroundColor: "rgba(40, 167, 69, 0.2)",
+              fill: true,
+              pointStyle: "circle",
+              pointRadius: 5,
+              pointHoverRadius: 8,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
+
+<script>
+  // Function to fetch and render patient details
+  async function fetchPatientDetails() {
+    try {
+      // Fetch data from the API
+      const response = await axios.get("/embrology/patientAllDetails");
+      const data = response.data;
+      const patientMRN = data.mr_no || "Data not available";
+      document.getElementById("patientMRN").textContent = patientMRN;
+      // Render patient name
+      const patientName = `${data.firstName || ""} ${data.middleName || ""} ${
+        data.lastName || ""
+      }`;
+      document.getElementById("patientName").textContent =
+        patientName.trim() || "Data not available";
+
+      // Calculate Age (Years, Months, Days)
+      const age = `${data.age_years || "0"} years, ${
+        data.age_months || "0"
+      } months, ${data.age_days || "0"} days`;
+      document.getElementById("patientAge").textContent = age;
+
+      // Render Gender
+      const gender = data.Gender || "Data not available";
+      document.getElementById("patientGender").textContent = gender;
+    } catch (error) {
+      console.error("Error fetching patient details:", error);
+      document.getElementById("patientMRN").textContent = "Error loading data";
+
+      document.getElementById("patientName").textContent = "Error loading data";
+    }
+  }
+
+  // Call the function to fetch and display patient details
+  fetchPatientDetails();
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cycleId = "<%= cycleId %>";
+    const endpoint = `/embrology/getCycleSummaryApiForOverview?cycleID=${cycleId}`;
+
+    axios
+      .get(endpoint)
+      .then((response) => {
+        // Extract the required data from the response
+        const patientCounsellingData =
+          response.data?.patientCounsellingData?.[0];
+
+        if (patientCounsellingData) {
+          // Update the DOM elements in the new table
+          document.getElementById("typeOfCycle").textContent =
+            patientCounsellingData.treatmentType || "N/A";
+          document.getElementById("stimulationProtocol").textContent =
+            patientCounsellingData.treatmentProtocolOption || "N/A";
+        } else {
+          console.error("Patient Counselling data is missing or empty.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  });
+</script>
+
+<script>
+  // Axios request to fetch data
+  const cycleId = "<%= cycleId %>" || "no id";
+
+  console.log(`happy new year!! `, cycleId);
+  console.log(`on script part calling 44 main updated :<%= cycleId %>`);
+  console.log(`REPORT__DATA___EMB___DAY :<%= cycleId %>`);
+
+  axios
+    .get(`/embrology/embrology_44_mainUPDATED?cycleID=${cycleId}`) // Replace with your actual API endpoint
+    .then((response) => {
+      // Get reportData from both day 3 and day 2 records
+      const day3Data = response.data.emb_day3record.reportData.map((item) => ({
+        ...item,
+        day: "Day3 : ",
+      }));
+      console.log(`DAY3`);
+      console.log(day3Data);
+
+      const day2Data = response.data.emb_day2record.reportData.map((item) => ({
+        ...item,
+        day: "Day2 : ",
+      }));
+
+      console.log(`DAY2`);
+      console.log(day2Data);
+      // Combine data from both day 2 and day 3 records
+      const combinedData = [...day3Data, ...day2Data];
+
+      console.log(`combined DATA`);
+      console.log(combinedData);
+
+      // Select the tbody element to insert rows
+      const tbody = document.getElementById("reportData_Id");
+
+      // Clear any existing rows before adding new ones
+      tbody.innerHTML = "";
+
+      // Loop through combined data and create rows for each entry
+      combinedData.forEach((item) => {
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+          <td contenteditable="true">${item.day}(${item.embryoNo})</td>
+          <td contenteditable="true">${item.grade}</td>
+          <td contenteditable="true">${item.status}</td>
+          <td contenteditable="true">${item.symmetry}</td>
+          <td contenteditable="true">${item.biNuclei}</td>
+          <td contenteditable="true">${item.NoOfCells}</td>
+          <td contenteditable="true">${item.Frag_Per}</td>
+          <td contenteditable="true">${item.comments}</td>
+        `;
+
+        // Append the row to the table body
+        tbody.appendChild(row);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+</script>
+
+<script>
+  // Dynamically passed from EJS
+
+  async function fetchAndDisplayEmbryoData() {
+    try {
+      const cycleId = "<%= cycleId %>";
+      // Fetch data from the API
+      const response = await axios.get(
+        `/embrology/getEmbryoTransferDataReport?cycleID=${cycleId}`
+      );
+
+      if (response.data.success) {
+        const reportData = response.data.data[0];
+        const grades = reportData.grades;
+
+        // Populate the embryo information table
+        const tableBody = document.getElementById("embryoTableBody");
+        tableBody.innerHTML = ""; // Clear existing rows
+
+        grades.forEach((grade) => {
+          const row = document.createElement("tr");
+
+          const embryoNoCell = document.createElement("td");
+          embryoNoCell.textContent = grade.embryoNo;
+
+          const gradeCell = document.createElement("td");
+          gradeCell.textContent = grade.grade;
+
+          row.appendChild(embryoNoCell);
+          row.appendChild(gradeCell);
+
+          tableBody.appendChild(row);
+        });
+      } else {
+        console.error("Failed to fetch data.");
+      }
+    } catch (error) {
+      console.error("Error fetching embryo data:", error);
+    }
+  }
+
+  // Call the function to fetch and display data
+  fetchAndDisplayEmbryoData();
+</script>
+
+<script>
+  // Dynamically passed from EJS
+
+  async function fetchEmbryoTransferredCount() {
+    try {
+      const cycleId = "<%= cycleId %>";
+      // Fetch data from the API
+      const response = await axios.get(
+        `/embrology/getEmbryoTransferDataReport?cycleID=${cycleId}`
+      );
+
+      if (response.data.success) {
+        const reportData = response.data.data[0];
+        const transferredCount = reportData.transferredCount;
+
+        // Update the span with the transferred count
+        document.getElementById("embryoTransferred").textContent =
+          transferredCount;
+      } else {
+        console.error("Failed to fetch data.");
+        document.getElementById("embryoTransferred").textContent = "N/A";
+      }
+    } catch (error) {
+      console.error("Error fetching transferred count:", error);
+      document.getElementById("embryoTransferred").textContent = "Error";
+    }
+  }
+
+  // Call the function to fetch and display data
+  fetchEmbryoTransferredCount();
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const endpoint = "/embrology/get-data";
+
+    axios
+      .get(endpoint)
+      .then((response) => {
+        // Extract the required data from the API response
+        const dataOpu = response.data?.dataOpu;
+
+        if (dataOpu) {
+          // Format the date as DD-MM-YYYY
+          const dateObj = new Date(dataOpu.Date);
+          const formattedDate = `${String(dateObj.getDate()).padStart(
+            2,
+            "0"
+          )}-${String(dateObj.getMonth() + 1).padStart(
+            2,
+            "0"
+          )}-${dateObj.getFullYear()}`;
+
+          // Populate the table
+          document.getElementById("retrievalDate").textContent =
+            formattedDate || "N/A";
+          document.getElementById("numOocytes").textContent =
+            dataOpu.NoOfOocytes || "N/A";
+        } else {
+          console.error("Data for OPU is missing or invalid.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cycleId = 8779; // Replace with dynamic value if needed
+    const endpoint = `/embrology/getStimulationSubmitDate?cycleId=${cycleId}`;
+
+    axios
+      .get(endpoint)
+      .then((response) => {
+        // Extract the triggerType from the API response
+        const triggerType = response.data?.triggerType;
+
+        // Check if triggerType exists and update the DOM
+        if (triggerType) {
+          document.getElementById("triggerMedication").textContent =
+            triggerType;
+        } else {
+          document.getElementById("triggerMedication").textContent = "N/A";
+          console.error("Trigger type data is missing or invalid.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching trigger type data:", error);
+      });
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    try {
+      // Retrieve cycleId dynamically from your EJS template
+      const cycleId = "<%= cycleId %>";
+      console.log("Cycle ID:", cycleId);
+
+      // Fetch data from the API using the cycleId
+      const response = await axios.get(
+        `/embrology/getCounsellingAllDataByCycleID`,
+        {
+          params: { cycleID: cycleId }, // Use `cycleID` as per your API
+        }
+      );
+
+      // Access the data returned from the API response
+      const data = response.data;
+      console.log("API Response:", data);
+
+      if (data) {
+        // Update the DOM with the extracted information
+        document.querySelector("#financialCounselingDate").textContent =
+          data.financialCounselingDate
+            ? new Date(data.financialCounselingDate).toLocaleDateString("en-GB")
+            : "N/A";
+
+        document.querySelector("#assignedCounselor").textContent =
+          data.assignedCounselor || "N/A";
+        document.querySelector("#assignedDoctor").textContent =
+          data.assignedDoctor || "N/A";
+      } else {
+        console.error("No data found for this cycleId.");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  });
+</script>
+<script>
+  // Function to format a date into DD-MM-YYYY format
+  function formatDateToDDMMYYYY(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0"); // Add leading zero if needed
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-indexed
+    const year = date.getFullYear();
+
+    return `${day}-${month}-${year}`;
+  }
+
+  // Example usage
+  const originalDate = Date.now(); // Replace with your dynamic date string
+  const formattedDate = formatDateToDDMMYYYY(originalDate);
+
+  // Update the DOM with the formatted date
+  document.getElementById("formattedDate").textContent = formattedDate;
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cycleId = "<%= cycleId %>";
+
+    const endpoint = `/embrology/getEmbryoTransferData?cycleID=${cycleId}`;
+
+    axios
+      .get(endpoint)
+      .then((response) => {
+        // Check if the response is successful and contains data
+        if (response.data?.success) {
+          const embryoData = response.data.data[0]; // Extract the first data object
+
+          if (embryoData) {
+            // Populate the DOM elements with the data
+            document.getElementById("et_date_id").textContent =
+              embryoData.date || "N/A";
+            document.getElementById("emb_tansfered_id").textContent =
+              embryoData.transferredCount || "N/A";
+            // Note: Cryopreserved embryos are not available in the current response
+          } else {
+            console.error("Embryo Transfer data is missing or empty.");
+          }
+        } else {
+          console.error("Error: Data not successful or empty.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  });
+</script>
+
+<script>
+  const cycleID = "<%= cycleId %>";
+  // Axios API call
+  axios
+    .get(`/embrology/embrology_44_mainUPDATED?cycleID=${cycleID}`)
+    .then((response) => {
+      const embryoTransferData = response.data.embryo_transfer;
+
+      // Check if data exists and update the grade dynamically
+      if (
+        embryoTransferData.length > 0 &&
+        embryoTransferData[0].embryosTransferred.length > 0
+      ) {
+        document.getElementById("embryo-grade").innerText =
+          embryoTransferData[0].embryosTransferred[0].grade;
+      } else {
+        document.getElementById("embryo-grade").innerText = "N/A";
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+      document.getElementById("embryo-grade").innerText = "Error fetching data";
+    });
+</script>
+
+<script>
+  // Example cycle ID, could be dynamic
+
+  // Axios API call for vitrifyEmbryosRecord
+  axios
+    .get(`/embrology/vitrifyEmbryosRecord?cycleID=${cycleID}`)
+    .then((response) => {
+      const embryosFrozen = response.data; // Assuming the response is a number or a value like 3
+
+      // Check if the response is valid and greater than 0
+      if (embryosFrozen > 0) {
+        document.getElementById("embryos-frozen").innerText = embryosFrozen;
+      } else {
+        document.getElementById("embryos-frozen").innerText = ""; // Leave it blank if 0 or no response
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+      document.getElementById("embryos-frozen").innerText = ""; // In case of an error, leave it blank
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cycleId = 339; // Replace with the dynamic cycleId if needed
+
+    // Fetch fertilization data
+    axios
+      .get(`/embrology/getFertilizationPerc?cycleId=${cycleId}`)
+      .then((response) => {
+        const data = response.data;
+
+        // Populate IVF row
+        document.getElementById("ivfCount").textContent = data.IVF || "-";
+        document.getElementById("ivfRate").textContent =
+          data.IVF > 0 ? data.fertilizationPercentage : "-";
+
+        // Populate ICSI row
+        document.getElementById("icsiCount").textContent = data.ICSI || "-";
+        document.getElementById("icsiRate").textContent =
+          data.ICSI > 0 ? data.fertilizationPercentage : "-";
+      })
+      .catch((error) => {
+        console.error("Error fetching fertilization data:", error);
+      });
+  });
+</script>

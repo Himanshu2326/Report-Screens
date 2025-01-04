@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discharge Summary</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .table2 {
+      width: 100%;
+      border: 1px solid #dee2e6;
+      border-collapse: collapse;
+    }
+
+    .table2 th,
+    .table2 td {
+      border: 1px solid #dee2e6;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .fw-bold {
+      font-weight: bold;
+    }
+
+    .btn-style {
+      font-size: 0.9rem;
+      padding: 4px 10px;
+    }
+  </style>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* font-family: Arial, sans-serif; */
+    }
+
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
+
+    h1 {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      /* Use different weights based on your need */
+    }
+
+    p {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .left-section {
+      font-size: 14px;
+    }
+
+    .left-section p {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .left-section span {
+      font-weight: bold;
+    }
+
+    .logo-section {
+      margin-left: 140px;
+      margin-top: -30px;
+    }
+
+    .logo-section {
+      margin-left: 145px;
+      margin-top: -30px;
+    }
+
+    .logo-section {
+      text-align: center;
+    }
+
+    .logo-section img {
+      width: 350px;
+      height: auto;
+    }
+
+    label {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #160647;
+    }
+
+    table thead tr th {
+      background: #f2f2f2 !important;
+    }
+
+    .td-width {
+      width: 60%;
+    }
+
+    .right-section {
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .right-section p {
+      margin-bottom: 5px;
+    }
+
+    .right-section strong {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .details-section {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .details-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 10px 0;
+    }
+
+    .details-left,
+    .details-right {
+      flex: 1;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+    }
+
+    .details-left p,
+    .details-right p {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .details-left span,
+    .details-right span {
+      font-weight: bold;
+      margin-left: 10px;
+      color: #646363;
+      border-bottom: #8d8b8b 1px solid;
+      flex: 1;
+    }
+
+    .health-table-section {
+      margin-top: 20px;
+    }
+
+    .sample-info-left,
+    .sample-info-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .sample-info-left p,
+    .sample-info-right p {
+      font-size: 15px;
+      color: #444;
+      /* margin-bottom: 5px; */
+      font-weight: 600;
+    }
+
+    .sample-info-left span,
+    .sample-info-right span {
+      margin-left: 10px;
+      font-weight: 500;
+      color: #646363;
+    }
+
+    .chart-container {
+      width: 100%;
+      max-width: 300px;
+      margin: auto;
+      max-height: auto;
+    }
+
+    canvas {
+      margin-bottom: 40px;
+    }
+
+    .bar-chart {
+      height: 400px;
+      margin-bottom: 0;
+    }
+
+    .doctor-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 60px 0;
+
+      p {
+        font-weight: 500;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-4">
+    <h2 class="text-center fw-bold mb-4">Discharge Summary</h2>
+
+    <header class="header-container">
+      <div class="left-section">
+        <p>Date: <span id="formattedDate"></span></p>
+      </div>
+      <div class="logo-section">
+        <img src="../images/logo.png" alt="lifelinkr Logo" />
+      </div>
+      <div class="right-section">
+        <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+        <p>CLINIC ADDRESS STREET,</p>
+        <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+        <p>Phone No.: 9898988322</p>
+      </div>
+    </header>
+
+    <!-------Patient Details Section-------->
+    <div class="details-section mb-4">
+      <div class="details-row">
+        <div class="details-left">
+          <p>Patient Name:</p>
+          <span id="patientName"></span>
+        </div>
+        <div class="details-right">
+          <p>Patient MRN:</p>
+          <span id="patientMRN"></span>
+        </div>
+      </div>
+      <div class="details-row">
+        <div class="details-left">
+          <p>Age:</p>
+          <span id="patientAge"></span>
+        </div>
+        <div class="details-right">
+          <p>Gender:</p>
+          <span id="patientGender"></span>
+        </div>
+      </div>
+      <div class="details-row">
+        <div class="details-right">
+          <p>Date of Admission:</p>
+          <span id="admission-date"></span>
+        </div>
+
+        <div class="details-left">
+          <p>Date of Discharge:</p>
+          <span id="transferDate"></span>
+        </div>
+      </div>
+      <div class="details-row">
+        <div class="details-left">
+          <p>Assigned Doctor:</p>
+          <span id="assignedDoctor"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clinical Details -->
+    <h5 class="fw-bold mt-4">Clinical Details</h5>
+    <div class="col col-12 pr-xl-0 pl-xl-0">
+      <div class="slidx">
+        <table class="table2">
+          <tbody>
+            <tr>
+              <th class="fw-bold">Treatment</th>
+              <td><span id="treatmentId"></span></td>
+            </tr>
+            <tr>
+              <th class="fw-bold">Ovum</th>
+              <td><span id="ovumId"></span></td>
+            </tr>
+            <tr>
+              <th class="fw-bold">Sperm</th>
+              <td><span id="spermId"></span></td>
+            </tr>
+            <tr>
+              <th class="fw-bold">Treatment Protocol</th>
+              <td><span id="t_protocolId"></span></td>
+            </tr>
+            <!-- <tr>
+                <th class="fw-bold">Endometrial Thickness</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th class="fw-bold">Anesthesia Used</th>
+                <td></td>
+              </tr> -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- <div class="card">
+        <div class="col-xl-12 p-heading"></div>
+
+        <div class="card-body pt-0 pb-2">
+          <div class="form-row pt-1 pb-0">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+              <div class="form-group">
+                <label class="input__label">
+                  Treatment: <span id="treatmentId"></span>
+                  <br />
+                  Ovum: <span id="ovumId"></span>
+                  <br />
+                  Sperm: <span id="spermId"></span>
+                  <br />
+                  Treatment Protocol:
+                  <span id="t_protocolId"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+    <div class="mt-4">
+      <label for="embryoTransferred" class="form-label fw-bold">
+        Number of Embryos Transferred
+      </label>
+      <span id="embryoTransferred" class="ms-2"></span>
+    </div>
+
+    <label class="myo-left-right mt-2">Embryo Information</label>
+    <div id="embryoInfoContainer" class="slidx">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Embryo Number</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody id="embryoTableBody">
+          <!-- Data will be dynamically inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <!-- Post-Procedure Instructions -->
+    <h5 class="fw-bold mt-4">Post-Procedure Instructions</h5>
+
+    <label class="myo-left-right mt-2">Prescription</label>
+    <div id="prescriptionContainer" class="slidx">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Drug/Molecule</th>
+            <th>Dose</th>
+            <th>Frequency</th>
+            <th>Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <label class="myo-left-right mt-2">Follow-Up</label>
+    <div id="followUpContainer" class="slidx">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Follow-up Instruction</th>
+            <th>Follow-up Date</th>
+            <th>Requested By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Rows will be dynamically generated here -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Doctor's Signature -->
+
+    <div class="mt-4">
+      <div class="mb-3">
+        <label for="signatureDate" class="form-label fw-bold">Date</label>
+        <input type="date" id="signatureDate" class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label for="doctorSignature" class="form-label fw-bold">Doctor's Signature</label>
+        <input type="text" id="doctorSignature" class="form-control" placeholder="Enter Doctor's Signature" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

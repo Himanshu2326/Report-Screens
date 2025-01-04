@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ultrasound Follicular/TVS Report</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .table td,
+    .table th {
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .field {
+      width: 40%;
+      font-weight: bold;
+    }
+
+    .details {
+      width: 60%;
+    }
+  </style>
+   <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .left-section {
+        font-size: 14px;
+    }
+
+    .left-section p {
+        margin-bottom: 5px;
+    }
+
+    .left-section span {
+        font-weight: bold;
+    }
+
+    .logo-section {
+        margin-left: 145px;
+        margin-top: -30px;
+      }
+    .logo-section {
+        text-align: center;
+    }
+
+    .logo-section img {
+        width: 350px;
+        height: auto;
+    }
+
+    .right-section {
+        text-align: right;
+        font-size: 14px;
+    }
+
+    .right-section p {
+        margin-bottom: 5px;
+    }
+
+    .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+    }
+
+    .details-left,
+    .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .details-left p,
+    .details-right p {
+        font-size: 16px;
+    }
+
+    .details-left span,
+    .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+    }
+
+    .health-table-section {
+        margin-top: 20px;
+    }
+
+    .sample-info-left,
+    .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .sample-info-left p,
+    .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+    }
+
+    .sample-info-left span,
+    .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+    }
+
+
+    .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+    }
+
+    canvas {
+        margin-bottom: 40px;
+    }
+
+    .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+    }
+
+    .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+
+        p {
+            font-weight: 500;
+        }
+    }
+</style>
+</head>
+
+<body>
+  <div class="container py-5">
+    <header class="header-container">
+      <div class="left-section">
+        <p>Date: <span>14-12-2024 11:52 AM</span></p>
+        <p>Reference No.: <span>8877LINR990</span></p>
+      </div>
+      <div class="logo-section">
+        <img src="../images/logo.png" alt="lifelinkr Logo" />
+      </div>
+      <div class="right-section">
+        <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+        <p>CLINIC ADDRESS STREET,</p>
+        <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+        <p>Phone No.: 9898988322</p>
+      </div>
+    </header>
+
+    <!-------Patient Details Section-------->
+    <div class="details-section mb-4">
+      <div class="details-row">
+          <div class="details-left">
+              <p>Patient Name:</p>
+              <span></span>
+          </div>
+          <div class="details-right">
+              <p>Patient Id:</p>
+              <span></span>
+          </div>
+      </div>
+      <div class="details-row">
+          <div class="details-left">
+              <p>Age:</p>
+              <span></span>
+          </div>
+          <div class="details-right">
+              <p>Hospital/Clinic Name:</p>
+              <span></span>
+          </div>
+      </div>
+      <div class="details-row">
+          <div class="details-left">
+              <p>Date of Procedure:</p>
+              <span></span>
+          </div>
+          <div class="details-right">
+              <p>Date of Admission:</p>
+              <span></span>
+          </div>
+      </div>
+
+      <div class="details-row">
+        <div class="details-left">
+            <p>Date of Discharge:</p>
+            <span></span>
+        </div>
+        <div class="details-right">
+            <p>Consultant:</p>
+            <span></span>
+        </div>
+    </div>
+  </div>
+
+    <!-- Follicular Monitoring Table -->
+    <div class="card mb-4">
+
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead class="table-light">
+            <tr>
+              <th class="field">Name</th>
+              <th class="details">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="field">Clinical History</td>
+              <td class="details"></td>
+            </tr>
+            <tr>
+              <td class="field">Procedure Details</td>
+              <td class="details">
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Post-Procedure Findings</td>
+              <td class="details">.</td>
+            </tr>
+            <tr>
+              <td class="field">Medications on Discharge</td>
+              <td class="details">
+               
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Instructions and Advice</td>
+              <td class="details">
+                
+              </td>
+            </tr>
+            <tr>
+              <td class="field">Prognosis and Next Steps</td>
+              <td class="details"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
