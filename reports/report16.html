@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical History</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .table2 {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-collapse: collapse;
+      }
+
+      .table2 th,
+      .table2 td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
+
+      .fw-bold {
+        font-weight: bold;
+      }
+
+      .btn-style {
+        font-size: 0.9rem;
+        padding: 4px 10px;
+      }
+      .content p {
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+    </style>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+        /* font-size: 20px; */
+      }
+
+      table tbody tr th {
+        font-weight: 400;
+      }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .health-table-section {
+        margin-top: 20px;
+      }
+
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+
+      canvas {
+        margin-bottom: 40px;
+      }
+
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+
+        p {
+          font-weight: 500;
+        }
+      }
+
+      .details,
+      .content {
+        margin-top: 20px;
+      }
+
+      .content h3 {
+        text-align: center;
+        margin: 10px 0;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      .footer {
+        margin-top: 80px;
+        font-size: 14px;
+      }
+
+      hr {
+        margin-top: 70px;
+      }
+
+      .custom_div {
+        display: flex;
+        flex-direction: column;
+        /* gap: 45px; */
+      }
+      .custom_div div {
+        margin-bottom: 48px;
+      }
+      /* .others_div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      } */
+    </style>
+  </head>
+
+  <body>
+    <div class="container mt-4">
+      <h2 class="text-center fw-bold mb-4">Medical Historoy</h2>
+
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="form-subtitle">Details</h2>
+      <div class="slidx">
+        <!-- <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th colspan="5">ABO Group & RH Type, EDTA Whole Blood</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>ABO Group</td>
+            <td colspan="3">TYPE A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>RH Type</td>
+            <td colspan="3">POSITIVE</td>
+            <td></td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">HIV 4TH GEN ASSAY (P24AG + HIV AB), SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>HIV 4TH GEN ASSAY (P24AG + HIV AB)</td>
+            <td colspan="3">NON REACTIVE</td>
+            <td></td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">HEPATITIS B SURFACE ANTIGEN, SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>HEPATITIS B SURFACE ANTIGEN</td>
+            <td colspan="3">NON REACTIVE</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PATIENT VALUE</td>
+            <td colspan="3">0.49</td>
+            <td>IU/mL</td>
+          </tr>
+          <tr>
+            <td colspan="5">
+              Ref. ranges for Electrochemiluminescence: < 0.90 (Non Reactive) or
+              > or = 1.00 (Reactive)
+            </td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">HEPATITIS C ANTIBODIES, SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>HEPATITIS C ANTIBODIES</td>
+            <td colspan="3">NON REACTIVE</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>PATIENT VALUE</td>
+            <td colspan="3">0.07</td>
+            <td>IU/mL</td>
+          </tr>
+          <tr>
+            <td colspan="5">
+              Ref. ranges for Electrochemiluminescence: < 0.90 (Non Reactive) or
+              > or = 1.00 (Reactive)
+            </td>
+          </tr>
+
+          <thead>
+            <tr>
+              <th colspan="5">VDRL, SERUM</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>VDRL</td>
+            <td colspan="3">NONREACTIVE</td>
+            <td>TITER</td>
+          </tr>
+        </table> -->
+
+        <table class="table table-bordered mt-4">
+          <thead>
+            <tr>
+              <th colspan="4">Female Details</th>
+              <th colspan="4">Male Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="2">Name:</td>
+              <td colspan="2"></td>
+              <td colspan="2">Name:</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td colspan="2">D.O.B:</td>
+              <td colspan="2"></td>
+
+              <td colspan="2">D.O.B:</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td colspan="2">Age</td>
+              <td colspan="2"></td>
+              <td colspan="2">Age</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td colspan="2">Occupation:</td>
+              <td colspan="2"></td>
+              <td colspan="2">Occupation:</td>
+              <td colspan="2"></td>
+            </tr>
+            <tr>
+              <td>Duration of cohabitation: (In years)</td>
+              <td></td>
+              <td>Married:</td>
+              <td>Yes</td>
+              <td colspan="3">Duration of Marriage: (In years)</td>
+              <td>11</td>
+            </tr>
+            <tr>
+              <td colspan="2">Consanguinity:</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th colspan="8">Female Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Age at Menarche:</p></td>
+              <td>12</td>
+              <td><p>Cycle:</p></td>
+              <td>Regular/Irregular</td>
+              <td><p>Cycle Length (days):</p></td>
+              <td>28</td>
+              <td><p>Days of Bleeding:</p></td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td><p>LMP:</p></td>
+              <td>8/2/20</td>
+              <td><p>Comments:</p></td>
+              <td></td>
+              <td><p>Dysmenorrhea:</p></td>
+              <td>No</td>
+              <td><p>Days:</p></td>
+              <td>8</td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th colspan="8">Past Medical History</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Anaemia</p></td>
+              <td>No</td>
+              <td><p>Asthma</p></td>
+              <td>No</td>
+              <td><p>Diabetes</p></td>
+              <td>No</td>
+              <td><p>Fibroids</p></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td><p>Problem with GA</p></td>
+              <td>No</td>
+              <td><p>Thalassemia</p></td>
+              <td>No</td>
+              <td><p>Sickle Cell Disease</p></td>
+              <td>No</td>
+              <td><p>Thyroid Disease</p></td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td><p>Hypertension</p></td>
+              <td>No</td>
+              <td><p>None Known</p></td>
+              <td>No</td>
+              <td><p>Tuberculosis</p></td>
+              <td>No</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+          <thead>
+            <tr>
+              <th colspan="8">Past Surgical History</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><p>Appendicectomy</p></td>
+              <td>No</td>
+              <td><p>Hysteroscopy</p></td>
+              <td>No</td>
+              <td><p>Cervical Surgery</p></td>
+              <td>No</td>
+              <td><p>Tuba! Surgery</p></td>
+              <td>No</td>
+            </tr>
+
+            <tr>
+              <td><p>Laparotomy</p></td>
+              <td>Ovarian Cyst</td>
+              <td colspan="4">
+                <p>Tests of Tuba! patency: Laparoscopy/HSG/Both</p>
+              </td>
+              <td><p>None Know</p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="6">
+                <div class="custom_div">
+                  <div class="laparoscopy"><p>Laparoscopy:</p></div>
+                  <div class="hetroscopy"><p>Hysteroscopy:</p></div>
+                </div>
+              </td>
+              <td colspan="2" class="top-align others_div">
+                <p>Other (Specify)</p>
+              </td>
+            </tr>
+            <tr style="height: 45px">
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="4"></td>
+            </tr>
+            <tr>
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="4"><p>H/O Any Inherited Disease:</p></td>
+            </tr>
+            <tr style="height: 45px">
+              <td colspan="2"></td>
+              <td colspan="2"></td>
+              <td colspan="4"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</html>
