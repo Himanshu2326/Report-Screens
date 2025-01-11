@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financial Information Form</title>
+
+   <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+         rel="stylesheet"
+         />
+      <style>
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         /* font-family: Arial, sans-serif; */
+         }
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         h1 {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 600;
+         /* Use different weights based on your need */
+         }
+         h2{
+         font-weight: 600;
+         text-align: center;
+         margin-bottom: 30px;
+         margin-bottom: 2rem;
+         text-transform: uppercase;
+         }
+         .hr_line {
+         margin-top: 32px;
+         }
+         p {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 400;
+         }
+         .container {
+         padding: 20px;
+         }
+         .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         }
+         .left-section {
+         font-size: 14px;
+         }
+         .left-section p {
+         margin-bottom: 5px;
+         font-weight: 600;
+         }
+         .left-section span {
+         font-weight: bold;
+         }
+         .logo-section {
+         margin-left: 140px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         margin-left: 228px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         text-align: center;
+         }
+         .logo-section img {
+         width: 350px;
+         height: auto;
+         }
+         label {
+         display: inline-block;
+         font-size: 16px;
+         font-weight: 600;
+         color: #160647;
+         }
+         table thead tr th {
+         background: #f2f2f2 !important;
+         /* font-size: 20px; */
+         }
+         table tbody tr th {
+         font-weight: 400;
+         }
+         .td-width {
+         width: 60%;
+         }
+         .right-section {
+         text-align: right;
+         font-size: 14px;
+         }
+         .right-section p {
+         margin-bottom: 5px;
+         }
+         .right-section strong {
+         font-size: 16px;
+         font-weight: bold;
+         }
+         .details-section {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .details-row {
+         display: flex;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 10px 0;
+         }
+         .details-left,
+         .details-right {
+         flex: 1;
+         display: flex;
+         gap: 10px;
+         justify-content: space-between;
+         }
+         .details-left p,
+         .details-right p {
+         font-size: 16px;
+         font-weight: 600;
+         }
+         .details-left span,
+         .details-right span {
+         font-weight: bold;
+         margin-left: 10px;
+         color: #646363;
+         border-bottom: #8d8b8b 1px solid;
+         flex: 1;
+         }
+         .health-table-section {
+         margin-top: 20px;
+         }
+         .sample-info-left,
+         .sample-info-right {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 7px;
+         }
+         .sample-info-left p,
+         .sample-info-right p {
+         font-size: 15px;
+         color: #444;
+         /* margin-bottom: 5px; */
+         font-weight: 600;
+         }
+         .sample-info-left span,
+         .sample-info-right span {
+         margin-left: 10px;
+         font-weight: 500;
+         color: #646363;
+         }
+         .chart-container {
+         width: 100%;
+         max-width: 300px;
+         margin: auto;
+         max-height: auto;
+         }
+         canvas {
+         margin-bottom: 40px;
+         }
+         .bar-chart {
+         height: 400px;
+         margin-bottom: 0;
+         }
+         .doctor-name {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: 60px 0;
+         p {
+         font-weight: 500;
+         }
+         }
+         .details,
+         .content {
+         margin-top: 20px;
+         }
+         label {
+         font-weight: 600;
+         color: #160647;
+         }
+         .table {
+         margin-top: 20px;
+         margin-bottom: 20px;
+         }
+         .fw-bold {
+         font-weight: 500 !important;
+         }
+         .mb-3 {
+         margin-bottom: 1rem;
+         }
+         .underline {
+         border-bottom: 1px solid #000;
+         display: inline-block;
+         width: 200px;
+         height: 1.2em;
+         vertical-align: bottom;
+         }
+         .treatment-list li {
+         margin-bottom: 10px;
+         }
+         .signature {
+         margin-top: 40px;
+         }
+         .center_text_data {
+         text-align: center;
+         }
+         /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+         .custom-underline {
+         display: flex;
+         align-items: end;
+         white-space: nowrap;
+         }
+         .custom-underline .underline {
+         display: block;
+         flex-grow: 1;
+         height: 1px; /* Thickness of the underline */
+         background-color: #000; /* Color of the underline */
+         margin-left: 10px; /* Space between text and underline */
+         }
+         .fullwidth{
+         margin-bottom: 1.5rem;
+         }
+         .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         }
+         .brif-medical-hisrory .underline{
+         margin-bottom: 1.5rem;
+         }
+          td {
+              height: 40px; /* Maintains space even if content is hidden */
+            }
+      </style>
+</head>
+<body>
+
+   <div class="container mt-4">
+      <h2>Finantial Information and Consent Form</h2>
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <h5 class="text-center">Finantial Information and Consent Form</h5>
+     
+        <!-- Table Section -->
+  <table class="table table-bordered text-center">
+    <thead>
+  <tr>
+    <th rowspan="2" class="text-center align-middle">Procedure Name</th>
+    <th rowspan="2" class="text-center align-middle">Sr. No.</th>
+    <th rowspan="2" class="text-center align-middle">Services</th>
+    <th class="text-center align-middle">Price</th>
+    <th class="text-center align-middle">Include/Exclude in</th>
+    <th class="text-center align-middle">Chargeble</th>
+  </tr>
+  <tr>
+    <th class="text-center align-middle">(Rs.)</th>
+    <th class="text-center align-middle">Package Price</th>
+    <th class="text-center align-middle">(RS.)</th>
+  </tr>
+</thead>
+
+
+
+    <tbody>
+      <tr>
+        <td>IVF</td>
+        <td>1</td>
+        <td>IVF Procedure</td>
+        <td></td>
+        <td></td>
+        <td></td>
+       
+      </tr>
+        <td></td>
+        <td>2</td>
+        <td>ICSI</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+      <tr>
+         <td></td>
+        <td>3</td>
+        <td>Blastocyst</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      
+      </tr>
+      <tr>
+         <td></td>
+        <td>4</td>
+        <td>Embryo Freezing (for one year)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+       <tr>
+         <td></td>
+        <td>5</td>
+        <td>Doner Embroy</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+  
+      <tr>
+         <td></td>
+        <td>6</td>
+        <td>Sperm Freezing (upto 12th Month)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+      <tr>
+         <td></td>
+        <td>7</td>
+        <td>Frozen Embryo Transfer (FET)</td>
+        <td></td>
+        <td></td>
+        <td></td>
+       
+      </tr>
+      <tr>
+         <td></td>
+        <td>8</td>
+        <td>Tesa</td>
+        <td></td>
+        <td></td>
+        <td></td>
+       
+      </tr>
+       <tr>
+         <td></td>
+        <td>9</td>
+        <td>M-Tesa</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+     
+      </tr>
+      <tr>
+         <td></td>
+        <td>10</td>
+        <td>Donor Egg Service</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+      <tr>
+         <td></td>
+        <td>11</td>
+        <td>Donor Sperm</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        
+      </tr>
+      <tr>
+        <td></td>
+        <td>12</td>
+        <td>Medicine</td>
+        <td>As per Actual</td>
+        <td></td>
+        <td></td>
+      </tr>
+       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+       <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td><strong>Total Payable</strong></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+
+   <div class="row fullwidth">
+         <div class="col-12 custom-underline mt-4"><strong>Others:</strong><span class="underline"></span></div>
+   </div>
+
+   <h5>Net Payable:</h5>
+   <p class="fw-bold">Terms & Conditions</p>
+   <ol>
+    <li>I/We agree the payments made bu me/ us towards my/ our treatments is non refundable in nature.</li>
+    <li>All Medicines and investigations are excluded from any of the pricing shall be paid as per actual bill at the time of purchase of medicines or before the investigations are done.</li>
+    <li>Initial payment shall be made at the time of booking,remaining payments shall be made before the start of stimulation </li>
+    <li>All disputes are subject to Delhi jurisdiction only.</li>
+    <li>Any issue connected to and arising out of the treatment shall be only reffered to arbitration to be conducted by a sole arbitrator appointed by Medicover Helthcare Pvt. Ltd. The seat of arbitration shall be Delhi.</li>
+   </ol>
+
+
+    <div class="row fullwidth">
+         <div class="col-12 custom-underline mt-4"><strong>Consent</strong><span class="underline"></span></div>
+   </div>
+   <p><span class="tick_box  border-1 me-2" style="width: 15px; height: 15px;"></span>Iagree to all the terms and conditions of my treatment including but not limited to the above mentioned, voluntarily and freely.</p>
+
+
+   <div class="signature">
+      <div class="row fullwidth">
+         <div class="col-4 custom-underline mt-4">Husband Name <span class="underline"></span></div>
+          <div class="col-4 custom-underline mt-4">Husband Signature <span class="underline"></span></div>
+         <div class="col-4 custom-underline mt-4">Contact Number <span class="underline"></span></div>
+      </div>
+       <div class="row fullwidth">
+          <div class="col-4 custom-underline mt-4">Wife Name <span class="underline"></span></div>
+            <div class="col-4 custom-underline mt-4">Wife Signature <span class="underline"></span></div>
+             <div class="col-4 custom-underline mt-4">Contact Number <span class="underline"></span></div>
+      </div>
+   </div>
+  </body>
+</html>
