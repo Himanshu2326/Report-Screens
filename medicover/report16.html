@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      
+      h2{
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-bottom: 2rem;
+      }
+      
+      .hr_line {
+        margin-top: 32px;
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 370px;
+        height: auto;
+      }
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background: #f4f4f4;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+            <div class="section">
+                   <h2>General Treatment Consent Form</h2>
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+            </div>
+      
+            <div class="section">
+                <p>Registration No Female: ________________________________________________________</p>
+                <p>Registration No Male: ____________________________________________________________</p>
+                <p>Cycle No: ___________________________________________________________________________</p>      
+            </div>
+
+            <div class="section">
+                <table>
+                    <tr>
+                        <th>Consent to Stimulation and Egg Collection</th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>Egg retrieval (IVF)</td>
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Catheterization (if required)</td>
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Any further operative measures found to be necessary in the course of treatment</td>
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+            
+                <table>
+                    <tr>
+                        <th>Consent to Surgical and Assisted Sperm Retrieval Procedures</th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>Surgical sperm retrieval (PESA, TESA, or TESE)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Assisted retrieval - Vibro Stimulator</td>
+                      <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Catheterization (if required)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Any further operative measures found to be necessary in the course of treatment</td>
+                      <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section border p-2">
+                <h4>IMPORTANT-FOR SURGICAL AND ASSISTED SPERM RETREIVAL ONLY</h4>
+                <p>I/we understand that the reisnoguaranteeth at sperm will be successfully retrieved or that sperm will necessarily fertilizeour eggs. Should the sperm retrieval fail, I/we have the following options available for the retrieve doocytes. In the event that donor sperm is required, separate consent forms will be provided (in addition to the section below.)</p>
+            </div>
+
+            <div class="section">
+               
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>Insemination of all or some eggs using donor sperm</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Freezing of all suitable eggs only</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Disposal of eggs according to ethical guidelines</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <p>
+                    Further to the acknowledgements given at the beginning of this consent form,1/we understand that no liability shall fall upon Medicover Fertility for any interruption to my treatment or for the loss, damage or destruction of my eggs, embryos or sperm caused by accident, fire, storm, tempest, theft, acts of God, acts of war, failure of supplies, strikes, lock outs, sabotage, floods or otherwise howsoever other than by specific and negligent act or omission of Medicover Fertility and there shall be no presumption of liability upon Medicover Fertility by reason of such loss, damage or destruction as aforesaid. That the eggs embryos or sperm can only be used according to the specific conditions laid down by applicable law. 1/we acknowledge that it is my/our responsibility to inform Medicover Fertility of any change of address or contact details. 1/we understand that 1/we will be asked, on a yearly basis, to confirm my/our wishes regarding continued storage within the maximum consented time
+period, and that an annual fee for storage is payable for each storage year, or part thereof.
+
+                </p>
+             
+        
+    </div>
+     <div class="section">
+      <p>Name and signature of Husband: ______________________________________________________</p>
+      <p>Name and signature of Wife: __________________________________________________________</p>
+      <p>Name, address & signature of the Witness: __________________________________________________________</p>
+    </div>
+</body>
+</html>

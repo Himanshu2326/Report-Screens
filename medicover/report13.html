@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Follicular Phase Table</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+     <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      
+      h2{
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+      
+      .hr_line {
+        margin-top: 32px;
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 370px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+        /* font-size: 20px; */
+      }
+
+      table tbody tr th {
+        font-weight: 400;
+      }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+      .health-table-section {
+        margin-top: 20px;
+      }
+
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+
+      canvas {
+        margin-bottom: 40px;
+      }
+
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 70px 0;
+
+        p {
+          font-weight: 500;
+        }
+      }
+
+      .details,
+      .content {
+        margin-top: 20px;
+      }
+
+      h2 {
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+      }
+
+      label {
+        font-weight: 600;
+        color: #160647;
+      }
+
+      .table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .fw-bold {
+        font-weight: 500 !important;
+      }
+
+      .mb-3 {
+        margin-bottom: 1rem;
+      }
+
+      .underline {
+        border-bottom: 1px solid #000;
+        display: inline-block;
+        width: 200px;
+        height: 1.2em;
+        vertical-align: bottom;
+      }
+
+      .treatment-list li {
+        margin-bottom: 10px;
+      }
+
+      .signature {
+        margin-top: 40px;
+      }
+      .center_text_data {
+        text-align: center;
+      }
+
+       /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+         .custom-underline {
+         display: flex;
+         align-items: end;
+         white-space: nowrap;
+         }
+         .custom-underline .underline {
+         display: block;
+         flex-grow: 1;
+         height: 1px; /* Thickness of the underline */
+         background-color: #000; /* Color of the underline */
+         margin-left: 10px; /* Space between text and underline */
+         }
+         .fullwidth{
+         margin-bottom: 1.5rem;
+         }
+         .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         }
+         th{
+            text-align: center;
+         }
+         
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <table class="table table-bordered">
+        <thead>
+            <tr>
+          <th colspan="16" style="text-transform: uppercase;">Follicular Phase</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td></td>
+                <td style="width: 150px;">Date</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+           
+             <tr>
+                <td rowspan="19" style="writing-mode: vertical-lr; width: 50px;text-align: center; font-weight: 600; text-transform: uppercase;">Ultrasound</td>
+                <td>Cycle Day</td>
+                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+              <tr>
+                 <td>Simulation</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>Endometrium</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>Sign</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>Chaperone</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>Follice</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+                <td>RL</td>
+               <td>RL</td>
+            </tr>
+             <tr>
+                 <td>>21</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>20</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>18</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>17</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>16</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>15</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>14</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>13</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>12</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+
+            <tr>
+                 <td>11</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                <td><10</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                <td>CYST</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+
+            <tr>
+                <td rowspan="9" style="writing-mode: vertical-lr; width: 50px;text-align: center; font-weight: 600; text-transform: uppercase;">
+                    Medicine
+                </td>
+                 <td>E2 (pmol/l)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>LH (IU1)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>P4 (nmol/l)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>FSH (1U/1)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+               
+            </tr>
+            <tr>
+                 <td>Lup/Bus</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>Gonal F</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            <tr>
+                 <td>Cetrotide</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>Luveris</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+             <tr>
+                 <td>Pergoveris</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+               <td></td>
+            </tr>
+            
+              <tr>
+                <td colspan="2" class="text-center" style="height: 120px;">Action And Comments</td>
+                <td></td>
+                 <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+
+        </tbody>
+        
+      </table>
+    </div>
+  </body>
+</html>

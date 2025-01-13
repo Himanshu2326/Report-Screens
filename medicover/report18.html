@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consent Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+
+      
+      h2{
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-bottom: 2rem;
+      }
+      
+      .hr_line {
+        margin-top: 32px;
+      }
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 370px;
+        height: auto;
+      }
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+table th {
+    background: #f4f4f4;
+}
+
+ .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+            <div class="section">
+                   <h2>General Treatment Consent Form</h2>
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+            </div>
+      
+            <div class="section">
+                <p>Registration No Female: ________________________________________________________</p>
+                <p>Registration No Male: ____________________________________________________________</p>
+                <p>Cycle No: ___________________________________________________________________________</p>      
+            </div>
+
+            <div class="section">
+                <p class="mt-5">(Embryos only) Continued storage of our embryos requires valid consent form both of us.</p>
+                <table>
+                    <tr>
+                        <th style="width: 70%;">Consent of Embryology Services</th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>Creation of embryos using In-vitro Fertilization (IVF) I ICSI</td>
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Blastocyst Culture (If applicable)</td>
+                       <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   
+                </table>
+            </div>
+
+            <div class="section">
+            
+                <table>
+                    <tr>
+                        <th  style="width: 70%;">Consent of Fresh Embryo / Blastocyst Transfer</th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>A maximum of embryos to be placed in my uterus <span class="tick_box"></span></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>A maximum of blastocyst to be placed in my uterus <span class="tick_box"></span></td>
+                      <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   
+                </table>
+            </div>
+
+            <div class="section border p-2">
+               
+                <p>I/we understand that no assurance can be given regarding the survival of any eggs, embryos, blastocysts or sperm following the freezing/storage/thawing process and that fertilization will not necessarily result from the insemination by any thawed gametes. I/we also understand that any embryo resulting from the procedure may not be suitable for transfer.
+</p>
+            </div>
+
+            <div class="section">
+               
+                <table>
+                    <tr>
+                        <th  style="width: 70%;">Consent to Freezing/Storage/Thawing/Use/ Re-Freezing</th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td>Egg</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Embryos (includes blastocyst stage embryos)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Sperm</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+
+              <div class="section">
+               
+                <table>
+                    <tr>
+                        <th  style="width: 70%;">Consent for Frozen Embryo/ Blastocyst Transfer</th>
+                        <th>Patient</th>
+                        <th>Partner</th>
+                        <th>Date</th>
+                    </tr>
+                    <tr>
+                        <td >A maximum of embryos to be placed in my uterus <span class="tick_box"></span></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>A maximum of blastocyst to be placed in my uterus <span class="tick_box"></span></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                   
+                </table>
+            </div>
+
+            <div class="section">
+                <h4>MEDICAL ACKNOWLEDGMENT</h4>
+                <p>
+                    ll information pertinent to the services available at Medicover Fertility have been given in accordance with best practices as currently understood.
+                </p>
+    </div>
+
+    <div class="section">
+        <table>
+            <tr>
+            <td style="width: 25%;">Medical Signature</td>
+            <td></td>
+            <td style="width: 25%;">Date</td>
+            <td></td>
+            </tr>
+
+            <tr>
+                <td>Job title</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+           
+        </table>
+    </div>
+     <div class="section my-5">
+      <p>Name and signature of Husband: ______________________________________________________</p>
+      <p>Name and signature of Wife: __________________________________________________________</p>
+      <p>Name, address & signature of the Witness: __________________________________________________________</p>
+    </div>
+</body>
+</html>
