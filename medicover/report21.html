@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Acknowledgment</title>
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+       h2 {
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+    
+
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .left-section {
+        font-size: 14px;
+      }
+
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+
+      .left-section span {
+        font-weight: bold;
+      }
+
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+
+      .logo-section {
+        text-align: center;
+      }
+
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        color: #160647;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+        /* font-size: 20px; */
+      }
+
+      table tbody tr th {
+        font-weight: 400;
+       
+      }
+    td{
+        text-align: center;
+    }
+
+      .td-width {
+        width: 60%;
+      }
+
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+
+      .right-section p {
+        margin-bottom: 5px;
+      }
+
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+
+    .header, .section {
+      margin-bottom: 20px;
+    }
+    .header span {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .acknowledgment-text {
+      margin-bottom: 20px;
+    }
+  
+    .terms {
+      margin-bottom: 20px;
+    }
+    .signature-section {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .signature-box {
+      width: 45%;
+    }
+    .signature-box span {
+      display: block;
+      padding-top: 10px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>PATIENT ACKNOWLEDGMENT</h2>
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+       <!-- Form Start  -->
+    <div class="header mt-5">
+      <span>Registration No Female: __________________________</span>
+      <span>Registration No Male: ____________________________</span>
+      <span>Cycle No: ______________________________________</span>
+    </div>
+
+    <div class="section">
+      <div class="section-title">PATIENT ACKNOWLEDGMENT</div>
+      <p class="acknowledgment-text">
+        I/we have read the Terms and Conditions of Treatment as on the reverse of this document.
+      </p>
+      <table class="table table-bordered" style="table-layout: fixed;">
+        <tr >
+            <td>Patient Signature</td>
+            <td></td>
+            <td  style="width: 200px;">Date</td>
+            <td></td>
+        </tr>
+          <tr>
+            <td>Partner Signature</td>
+            <td></td>
+            <td>Date</td>
+            <td></td>
+        </tr>
+          <tr>
+            <td>Witness Signature</td>
+            <td></td>
+            <td>Date</td>
+            <td></td>
+        </tr>
+      </table>
+      <p>(*)The above signature(s) only need witnessing if the signing of the consent form takes place away from the Clinic – e.g. at home.</p>
+    </div>
+
+    <div class="terms">
+      <h5>Terms & Conditions of Treatment at Medicover Fertility Place and Time of Payment</h5>
+      <ol>
+        <li>Payment must be received by Medicover Fertility on or before the first day of any treatment cycle and satisfactory proof of the same should be provided to Medicover Fertility by the patient. Only a receipt issued by an authorized signatory of Medicover Fertility shall be treated as adequate proof of payment.</li>
+        <li>For the mode and options of payment, please refer to the information leaflet provided to you at the time of consultation.</li>
+      </ol>
+
+      <h5>Place of Treatment</h5>
+      <ol>
+        <li>Unless otherwise agreed between the parties, treatment shall take place at Medicover Fertility. Medicover Fertility will not give advice, assistance, or treatment outside India except by prior agreement and in accordance with the law.</li>
+        <li>Where patients attending Medicover Fertility having begun treatment, or taken advice elsewhere, Medicover Fertility accepts no liability whatsoever for the consequences of that treatment or advice and gives no warranty that such treatment or advice was properly given.</li>
+      </ol>
+
+      <h5>Jurisdiction</h5>
+      <ol>
+        <li>
+          The parties hereby agree that the proper law for the construction of this agreement is the law of Indian Penal Court and the parties hereby irrevocably agree that all disputes, claims, complaints, issues, and proceedings arising out of treatment, assistance, and advice given at or by Medicover Fertility, including all claims for injury, loss, or damage connected with or arising out of the advice, assistance, and/or treatment given at or by Medicover Fertility howsoever that injury, loss, or damage shall be said to have been caused and whatsoever the cause of action raised, shall be subject to the exclusive jurisdiction of a sole arbitrator appointed by Medicover Fertility. The arbitration shall be conducted in accordance with the provisions of the Indian Arbitration and Conciliation Act, 1996, and Indian law shall be the governing law. The place of arbitration shall be New Delhi and the courts at Delhi shall have exclusive jurisdiction in respect of this agreement. The sole arbitrator's decision shall be final.
+        </li>
+      </ol>
+    </div>
+
+    <div class="signature-section">
+      <div class="signature-box">
+        <span>Name and signature of Husband______________________________________</span>
+      </div>
+      <div class="signature-box">
+        <span>Name and signature of Wife______________________________________</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

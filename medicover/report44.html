@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Anaesthesia Recovery Record</title>
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+         rel="stylesheet"
+         />
+      <style>
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         /* font-family: Arial, sans-serif; */
+         }
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         h1 {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 600;
+         /* Use different weights based on your need */
+         }
+         h2{
+         font-weight: 600;
+         text-align: center;
+         margin-bottom: 30px;
+         margin-bottom: 2rem;
+         text-transform: uppercase;
+         }
+         .hr_line {
+         margin-top: 32px;
+         }
+         p {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 400;
+         }
+         li{
+            list-style: none;
+         }
+         .container {
+         padding: 20px;
+         }
+         .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         }
+         .left-section {
+         font-size: 14px;
+         }
+         .left-section p {
+         margin-bottom: 5px;
+         font-weight: 600;
+         }
+         .left-section span {
+         font-weight: bold;
+         }
+         .logo-section {
+         margin-left: 140px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         margin-left: 228px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         text-align: center;
+         }
+         .logo-section img {
+         width: 350px;
+         height: auto;
+         }
+      
+         table thead tr th {
+         background: #f2f2f2 !important;
+         /* font-size: 20px; */
+         }
+         table tbody tr th {
+         font-weight: 400;
+         }
+         .td-width {
+         width: 60%;
+         }
+         .right-section {
+         text-align: right;
+         font-size: 14px;
+         }
+         .right-section p {
+         margin-bottom: 5px;
+         }
+         .right-section strong {
+         font-size: 16px;
+         font-weight: bold;
+         }
+         .details-section {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .details-row {
+         display: flex;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 10px 0;
+         }
+         .details-left,
+         .details-right {
+         flex: 1;
+         display: flex;
+         gap: 10px;
+         justify-content: space-between;
+         }
+         .details-left p,
+         .details-right p {
+         font-size: 16px;
+         font-weight: 600;
+         }
+         .details-left span,
+         .details-right span {
+         font-weight: bold;
+         margin-left: 10px;
+         color: #646363;
+         border-bottom: #8d8b8b 1px solid;
+         flex: 1;
+         }
+         .health-table-section {
+         margin-top: 20px;
+         }
+         .sample-info-left,
+         .sample-info-right {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 7px;
+         }
+         .sample-info-left p,
+         .sample-info-right p {
+         font-size: 15px;
+         color: #444;
+         /* margin-bottom: 5px; */
+         font-weight: 600;
+         }
+         .sample-info-left span,
+         .sample-info-right span {
+         margin-left: 10px;
+         font-weight: 500;
+         color: #646363;
+         }
+         .chart-container {
+         width: 100%;
+         max-width: 300px;
+         margin: auto;
+         max-height: auto;
+         }
+         canvas {
+         margin-bottom: 40px;
+         }
+         .bar-chart {
+         height: 400px;
+         margin-bottom: 0;
+         }
+         .doctor-name {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: 60px 0;
+         p {
+         font-weight: 500;
+         }
+         }
+         .details,
+         .content {
+         margin-top: 20px;
+         }
+        
+         .table {
+         margin-top: 20px;
+         margin-bottom: 20px;
+         }
+         .fw-bold {
+         font-weight: 500 !important;
+         }
+         .mb-3 {
+         margin-bottom: 1rem;
+         }
+         .underline {
+         border-bottom: 1px solid #8d8b8b;
+         display: inline-block;
+         width: 400px;
+         height: 1.5em;
+       
+         }
+          .underline2 {
+         border-bottom: 1px solid #8d8b8b;
+         display: inline-block;
+         width: 200px;
+         height: 1.5em;
+       
+         }
+         .treatment-list li {
+         margin-bottom: 10px;
+         }
+         .signature {
+         margin-top: 40px;
+         }
+         .center_text_data {
+         text-align: center;
+         }
+         /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+         .custom-underline {
+         display: flex;
+         align-items: end;
+         white-space: nowrap;
+         }
+         .custom-underline .underline {
+         display: block;
+         flex-grow: 1;
+         height: 1px; /* Thickness of the underline */
+         background-color: #8d8b8b; /* Color of the underline */
+         margin-left: 10px; /* Space between text and underline */
+         }
+         .fullwidth{
+         margin-bottom: 1.5rem;
+         }
+         .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         cursor: pointer;
+         }
+         .brif-medical-hisrory .underline{
+         margin-bottom: 1.5rem;
+         }
+
+       
+        .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+  
+      </style>
+   </head>
+   <body>
+      <div class="container mt-4">
+      <h2>Anaesthesia Recovery Record</h2>
+      <header class="header-container">
+         <div class="left-section">
+            <p>Date: <span id="formattedDate"></span></p>
+         </div>
+         <div class="logo-section">
+            <img src="../images/logo.png" alt="lifelinkr Logo" />
+         </div>
+         <div class="right-section">
+            <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+            <p>CLINIC ADDRESS STREET,</p>
+            <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+            <p>Phone No.: 9898988322</p>
+         </div>
+      </header>
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+         <div class="details-row">
+            <div class="details-left">
+               <p>Patient Name:</p>
+               <span id="patientName"></span>
+            </div>
+            <div class="details-right">
+               <p>Patient MRN:</p>
+               <span id="patientMRN"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Age:</p>
+               <span id="patientAge"></span>
+            </div>
+            <div class="details-right">
+               <p>Gender:</p>
+               <span id="patientGender"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Lab No.</p>
+               <span id="assignedCounselor"></span>
+            </div>
+            <div class="details-left">
+               <p>Ref By:</p>
+               <span id=""></span>
+            </div>
+         </div>
+      </div>
+
+          <!-- Form Start  -->
+    
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th colspan="2">Anaesthesia Recovery Record</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">Patient Received Time:</td>
+                    </tr>
+                    <tr>
+                        <td>Post-operative Instructions and Medications:</td>
+                        <td>Post-operative Complications:</td>
+                    </tr>
+                     <tr>
+                        <td>Post-operative Instructions and Medications:</td>
+                        <td rowspan="6"> 
+                            <label><input type="checkbox" class="me-5">Pain</label> <br>
+                            <label><input type="checkbox" class="me-5">Hypo/Hyperventilation</label><br>
+                            <label><input type="checkbox" class="me-5">Hypoxia</label><br>
+                            <label><input type="checkbox" class="me-5">Hypo/Hypertension</label><br>
+                             <label><input type="checkbox" class="me-5">Nausea/Vomiting</label><br>
+                              <label><input type="checkbox" class="me-5">Arrhythmias</label><br>
+                               <label><input type="checkbox" class="me-5">Laryngospasm</label><br>
+                                <label><input type="checkbox"class="me-5">Laryngospasm</label><br>
+                                <label><input type="checkbox" class="me-5">Other</label><br>
+                                 <label><input type="checkbox" class="me-5">None</label><br>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                    </tr>
+                     <tr>
+                        <td>2.</td>
+                    </tr>
+                     <tr>
+                        <td>3.</td>
+                    </tr>
+                    <tr>
+                        <td >4.</td>
+                    </tr>
+                   
+                </tbody>
+
+            
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr >
+                        <th colspan="9">Monitor the following every 5-10 min</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td rowspan="10" >
+                            Monitor <br>
+                             <label><input type="checkbox" class="me-5">ECG</label><br>
+                              <label><input type="checkbox" class="me-5">NIBP</label><br>
+                             <label><input type="checkbox" class="me-5">SpO2</label><br>
+                        </td>
+                    </tr>
+                      <tr>
+                         <td >Time</td>
+                        <td >Pulse</td>
+                        <td >BP</td> 
+                        <td >RR</td>
+                        <td >SpO2</td>
+                        <td >Urine Output</td>
+                        <td >Consciousness</td>   
+                        <td >Remarks</td>
+                    </tr>
+                      <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+
+                     <tr>
+                        <td >&nbsp;</td>
+                        <td ></td>
+                        <td ></td> 
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>
+                        <td ></td>   
+                        <td ></td>                   
+                    </tr>
+                   
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="4">Recovery Score in case of General Anaesthesia / Sedation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="fw-semibold">Parameter</td>
+                        <td class="fw-semibold">Score 0</td>
+                        <td class="fw-semibold">Score 1</td>
+                        <td class="fw-semibold">Score 2</td>
+                    </tr>
+                    <tr>
+                        <td>Level of Consciousness</td>
+                        <td>Not Responding</td>
+                        <td>Arousable on Command</td>
+                        <td>Awake and oriented</td>
+                    </tr>
+                     <tr>
+                        <td>Physical Activity</td>
+                        <td>Unable to voluntarily move extremities</td>
+                        <td>Able to move two extremities</td>
+                        <td>Able to move all extremities</td>
+                    </tr>
+                     <tr>
+                        <td>Haemodynamic Stability</td>
+                        <td>BP+/-50mm Hg of Preanaesth BP</td>
+                        <td>SP+/20-50 mmHg of Preanaesth BP</td>
+                        <td>BP < 20mmHg +/- Preanaesth BP</td>
+                    </tr>
+                     <tr>
+                        <td>Respiratory Stability</td>
+                        <td>Apneic</td>
+                        <td>Dyspnea with shallow or limited breathing</td>
+                        <td>Able to breath deeply and Cough freely</td>
+                    </tr>
+                     <tr>
+                        <td>Oxygen Saturation Status</td>
+                        <td>Saturations < 90% with supplement 01</td>
+                        <td>Saturations < 90% with supplement 02</td>
+                        <td>Saturations < 90% with room air </td>
+                    </tr>
+                     <tr>
+                        <td>Postoperative Pain Assessment</td>
+                        <td>Presistent Server Pain</td>
+                        <td>Modrate to serve Pain  controlled with IV Analgesics</td>
+                        <td>None or Mild Discomfort</td>
+                    </tr>
+                     <tr>
+                        <td>Postoperative Emetic symtoms</td>
+                        <td>Presistent Nausea & Vomiting</td>
+                        <td>Transient Vomiting or Retching</td>
+                        <td>None of Mild Nausea with No active Vomiting</td>
+                    </tr>
+                     <tr>
+                        <td colspan="2">Patients Score On Admission to recovery /14</td>
+                        <td colspan="2">Before transfer /14</td>
+                     
+                    </tr>
+                     <tr>
+                        <td colspan="2">Shifting Orders</td>
+                        <td colspan="2">Time of Shifting:</td>
+                       
+                    </tr>
+                     <tr>
+                        <td colspan="2">Shif to:Ward/ PICU/NICU</td>
+                        <td colspan="2">Shift with: 02 Mask / ETT + Spont / ETT + Ventilator</td>
+                    
+                    </tr>
+
+                     <tr>
+                        <td>Vitals at Shifting: Pulse</td>
+                        <td>BP</td>
+                        <td>SpO2</td>
+                        <td>RR</td>
+                    </tr>
+
+                     <tr style="height: 100px;">
+                        <td colspan="2">Instruction:</td>
+                        <td colspan="2">Name and Signature of Anaesthesiologist</td>
+                    
+                    </tr>
+                </tbody>
+            </table>
+
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

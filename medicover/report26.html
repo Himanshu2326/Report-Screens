@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Form 1-a</title>
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+         rel="stylesheet"
+         />
+      <style>
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         /* font-family: Arial, sans-serif; */
+         }
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         h1 {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 600;
+         /* Use different weights based on your need */
+         }
+         h2{
+         font-weight: 600;
+         text-align: center;
+         margin-bottom: 30px;
+         margin-bottom: 2rem;
+         text-transform: uppercase;
+         }
+         .hr_line {
+         margin-top: 32px;
+         }
+         p {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 400;
+         }
+         .container {
+         padding: 20px;
+         }
+         .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         }
+         .left-section {
+         font-size: 14px;
+         }
+         .left-section p {
+         margin-bottom: 5px;
+         font-weight: 600;
+         }
+         .left-section span {
+         font-weight: bold;
+         }
+         .logo-section {
+         margin-left: 140px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         margin-left: 228px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         text-align: center;
+         }
+         .logo-section img {
+         width: 350px;
+         height: auto;
+         }
+         label {
+         display: inline-block;
+         font-size: 16px;
+         font-weight: 600;
+         color: #160647;
+         }
+         table thead tr th {
+         background: #f2f2f2 !important;
+         /* font-size: 20px; */
+         }
+         table tbody tr th {
+         font-weight: 400;
+         }
+         .td-width {
+         width: 60%;
+         }
+         .right-section {
+         text-align: right;
+         font-size: 14px;
+         }
+         .right-section p {
+         margin-bottom: 5px;
+         }
+         .right-section strong {
+         font-size: 16px;
+         font-weight: bold;
+         }
+         .details-section {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .details-row {
+         display: flex;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 10px 0;
+         }
+         .details-left,
+         .details-right {
+         flex: 1;
+         display: flex;
+         gap: 10px;
+         justify-content: space-between;
+         }
+         .details-left p,
+         .details-right p {
+         font-size: 16px;
+         font-weight: 600;
+         }
+         .details-left span,
+         .details-right span {
+         font-weight: bold;
+         margin-left: 10px;
+         color: #646363;
+         border-bottom: #8d8b8b 1px solid;
+         flex: 1;
+         }
+         .health-table-section {
+         margin-top: 20px;
+         }
+         .sample-info-left,
+         .sample-info-right {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 7px;
+         }
+         .sample-info-left p,
+         .sample-info-right p {
+         font-size: 15px;
+         color: #444;
+         /* margin-bottom: 5px; */
+         font-weight: 600;
+         }
+         .sample-info-left span,
+         .sample-info-right span {
+         margin-left: 10px;
+         font-weight: 500;
+         color: #646363;
+         }
+         .chart-container {
+         width: 100%;
+         max-width: 300px;
+         margin: auto;
+         max-height: auto;
+         }
+         canvas {
+         margin-bottom: 40px;
+         }
+         .bar-chart {
+         height: 400px;
+         margin-bottom: 0;
+         }
+         .doctor-name {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: 60px 0;
+         p {
+         font-weight: 500;
+         }
+         }
+         .details,
+         .content {
+         margin-top: 20px;
+         }
+         label {
+         font-weight: 600;
+         color: #160647;
+         }
+         .table {
+         margin-top: 20px;
+         margin-bottom: 20px;
+         }
+         .fw-bold {
+         font-weight: 500 !important;
+         }
+         .mb-3 {
+         margin-bottom: 1rem;
+         }
+         .underline {
+         border-bottom: 1px solid #000;
+         display: inline-block;
+         width: 300px;
+         height:  1.5em;
+         vertical-align: bottom;
+         }
+          .underline2 {
+         border-bottom: 1px solid #000;
+         display: inline-block;
+         width: 200px;
+         height:  1.5em;
+         vertical-align: bottom;
+         }
+         .treatment-list li {
+         margin-bottom: 10px;
+         }
+         .signature {
+         margin-top: 40px;
+         }
+         .center_text_data {
+         text-align: center;
+         }
+         /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+         .custom-underline {
+         display: flex;
+         align-items: end;
+         white-space: nowrap;
+         }
+         .custom-underline .underline {
+         display: block;
+         flex-grow: 1;
+         height: 1px; /* Thickness of the underline */
+         background-color: #000; /* Color of the underline */
+         margin-left: 10px; /* Space between text and underline */
+         }
+         .fullwidth{
+         margin-bottom: 1.5rem;
+         }
+         .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         cursor: pointer;
+         }
+         .brif-medical-hisrory .underline{
+         margin-bottom: 1.5rem;
+         }
+
+       
+        .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .section ol li{
+        margin-bottom: 15px;
+    }
+    .signature-section .underline{
+        width: 100%;
+    }
+      </style>
+   </head>
+   <body>
+      <div class="container mt-4">
+      <h2>Form 1-a</h2>
+      <header class="header-container">
+         <div class="left-section">
+            <p>Date: <span id="formattedDate"></span></p>
+         </div>
+         <div class="logo-section">
+            <img src="../images/logo.png" alt="lifelinkr Logo" />
+         </div>
+         <div class="right-section">
+            <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+            <p>CLINIC ADDRESS STREET,</p>
+            <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+            <p>Phone No.: 9898988322</p>
+         </div>
+      </header>
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+         <div class="details-row">
+            <div class="details-left">
+               <p>Patient Name:</p>
+               <span id="patientName"></span>
+            </div>
+            <div class="details-right">
+               <p>Patient MRN:</p>
+               <span id="patientMRN"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Age:</p>
+               <span id="patientAge"></span>
+            </div>
+            <div class="details-right">
+               <p>Gender:</p>
+               <span id="patientGender"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Lab No.</p>
+               <span id="assignedCounselor"></span>
+            </div>
+            <div class="details-left">
+               <p>Ref By:</p>
+               <span id=""></span>
+            </div>
+         </div>
+      </div>
+
+          <!-- Form Start  -->
+    <div class="header">
+      <p>Registration No Female: ______________________________________</p>
+      <p>Registration No Male: ________________________________________</p>
+      <p>Cycle No: ____________________________________________________</p>
+    </div>
+    <div class="section-title my-3">Consent for IVF/ICSI with Donor Semen</div>
+    <div class="section">
+        <p style="display: flex; align-items: baseline;">Name of Female Partner<span style="flex-grow: 1;" class="underline"></span></p>
+        <p style="display: flex; align-items: baseline;">Name of male Partner<span style="flex-grow: 1;" class="underline"></span></p>
+        <p style="display: flex; align-items: baseline;">Address<span style="flex-grow: 1;" class="underline"></span></p>
+        <p style="display: flex; align-items: baseline;">Name and address of Clinic<span style="flex-grow: 1;" class="underline"></span></p>
+       
+    </div>
+
+    <div class="section mt-5">
+         <p>I have asked the Clinic named above to provide me with treatment services to help me bear a child. I consent to:</p>
+         <ol type="a">
+            <li>Being prepared for oocyte retrieval by the administration of hormones and other drugs</li>
+            <li>The removal of oocytes from my ovaries with ultrasound guidance
+                <div class="row">
+                    <div class="col-4">Under Sedation  <input type="checkbox"></div>
+                     <div class="col-4">Local Anaesthesia  <input type="checkbox"></div>
+                      <div class="col-4">General Anaesthesia  <input type="checkbox"></div>
+                </div>
+                <p>(Tick the appropirate box)</p>
+                
+                
+            </li>
+             <li>The mixing of the following (using technologies such as IVF or ICS) to create embryos:
+                <div class="row">
+                    <div class="col-3">My oocytes  <input type="checkbox"></div>
+                     <div class="col-3">the sperm of my husband  <input type="checkbox"></div>
+                      <div class="col-3">Anonymous donor oocyte  <input type="checkbox"></div>
+                      <div class="col-3">anonymous donor sperm  <input type="checkbox"></div>
+                </div>
+                <p class="mt-4">In case if donor oocyte/sperm is used with my consent, we will not attempt to find out the identity of the donor. (Separate consent forms shall be signed by us for either of these two options).</p>
+                <p>The type of anaesthetic proposed (general/regional/sedation) has been discussed in terms which I have understood.</p>
+                <p class="fw-semibold">(Tick the appropriate and strike off the others)</p>
+            </li>
+         </ol>
+    </div>
+    
+    <div class="section">
+        <p>I/We had a full discussion with <span class="underline"></span> about the above procedures and i have been given oral and written information about them.</p>
+        <p>I/We consent that I/we shall be the legal parent(s) of the child and the child will have all the legal rights on me, in case of anonymous gamete/embryo donation.</p>
+    </div>
+ 
+
+ <div class="signature-section mt-5">
+      <div class="row">
+        <div class="col-6">
+          <span>Name and signature of Husband</span><span class="underline"></span>
+        </div>
+        <div class="col-6">
+          <span>Name and signature of Wife</span><span class="underline"></span>
+        </div>
+        <div class="col-6 my-3">
+          <span>Name, address & signature of the Witness</span><span class="underline"></span>
+        </div>
+         <div class="col-6 my-3">
+          <span>Name and signature of the Doctor</span><span class="underline"></span>
+        </div>
+         <div class="col-6 my-3">
+          <span>Name and address of the ART clinic</span><span class="underline"></span>
+        </div>
+         <div class="col-6 my-3">
+          <span>Name and signature of Embryologist</span><span class="underline"></span>
+        </div>
+        
+      </div>
+    </div>
+
+      <p>*The appropriate option must be ticked</p>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>

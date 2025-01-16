@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surgical Safety Checklist</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        /* font-family: Arial, sans-serif; */
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        /* Use different weights based on your need */
+      }
+      h2 {
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+      .hr_line {
+        margin-top: 32px;
+      }
+      p {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+      }
+      ul {
+        padding-left: 0;
+      }
+
+      li {
+        list-style: none;
+      }
+      .container {
+        padding: 20px;
+      }
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .left-section {
+        font-size: 14px;
+      }
+      .left-section p {
+        margin-bottom: 5px;
+        font-weight: 600;
+      }
+      .left-section span {
+        font-weight: bold;
+      }
+      .logo-section {
+        margin-left: 140px;
+        margin-top: -30px;
+      }
+      .logo-section {
+        margin-left: 228px;
+        margin-top: -30px;
+      }
+      .logo-section {
+        text-align: center;
+      }
+      .logo-section img {
+        width: 350px;
+        height: auto;
+      }
+
+      table thead tr th {
+        background: #f2f2f2 !important;
+        /* font-size: 20px; */
+      }
+      table tbody tr th {
+        font-weight: 400;
+      }
+      .td-width {
+        width: 60%;
+      }
+      .right-section {
+        text-align: right;
+        font-size: 14px;
+      }
+      .right-section p {
+        margin-bottom: 5px;
+      }
+      .right-section strong {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .details-section {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .details-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        padding: 10px 0;
+      }
+      .details-left,
+      .details-right {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+      }
+      .details-left p,
+      .details-right p {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .details-left span,
+      .details-right span {
+        font-weight: bold;
+        margin-left: 10px;
+        color: #646363;
+        border-bottom: #8d8b8b 1px solid;
+        flex: 1;
+      }
+      .health-table-section {
+        margin-top: 20px;
+      }
+      .sample-info-left,
+      .sample-info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+      .sample-info-left p,
+      .sample-info-right p {
+        font-size: 15px;
+        color: #444;
+        /* margin-bottom: 5px; */
+        font-weight: 600;
+      }
+      .sample-info-left span,
+      .sample-info-right span {
+        margin-left: 10px;
+        font-weight: 500;
+        color: #646363;
+      }
+      .chart-container {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+        max-height: auto;
+      }
+      canvas {
+        margin-bottom: 40px;
+      }
+      .bar-chart {
+        height: 400px;
+        margin-bottom: 0;
+      }
+      .doctor-name {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+        p {
+          font-weight: 500;
+        }
+      }
+      .details,
+      .content {
+        margin-top: 20px;
+      }
+
+      .table {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .fw-bold {
+        font-weight: 500 !important;
+      }
+      .mb-3 {
+        margin-bottom: 1rem;
+      }
+      .underline {
+        border-bottom: 1px solid #8d8b8b;
+        display: inline-block;
+        width: 400px;
+        height: 1.5em;
+      }
+      .underline2 {
+        border-bottom: 1px solid #8d8b8b;
+        display: inline-block;
+        width: 200px;
+        height: 1.5em;
+      }
+      .treatment-list li {
+        margin-bottom: 10px;
+      }
+      .signature {
+        margin-top: 40px;
+      }
+      .center_text_data {
+        text-align: center;
+      }
+      /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+      .custom-underline {
+        display: flex;
+        align-items: end;
+        white-space: nowrap;
+      }
+      .custom-underline .underline {
+        display: block;
+        flex-grow: 1;
+        height: 1px; /* Thickness of the underline */
+        background-color: #8d8b8b; /* Color of the underline */
+        margin-left: 10px; /* Space between text and underline */
+      }
+      .fullwidth {
+        margin-bottom: 1.5rem;
+      }
+      .tick_box {
+        display: inline-block;
+        border: 2px solid black;
+        height: 25px;
+        width: 35px;
+        cursor: pointer;
+      }
+      .brif-medical-hisrory .underline {
+        margin-bottom: 1.5rem;
+      }
+
+      .section-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .section ol li {
+        margin-bottom: 15px;
+      }
+      .signature-section .underline {
+        width: 100%;
+      }
+      .third-col p {
+        border-bottom: 1px solid #8d8b8b;
+      }
+      .questions{
+        margin-bottom: 20px;
+      }
+      .questions p{
+        margin-bottom: 10px;
+      }
+      label{
+        display: inline-flex;
+        align-items: baseline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-4">
+      <h2>Surgical Safety Checklist</h2>
+      <header class="header-container">
+        <div class="left-section">
+          <p>Date: <span id="formattedDate"></span></p>
+        </div>
+        <div class="logo-section">
+          <img src="../images/logo.png" alt="lifelinkr Logo" />
+        </div>
+        <div class="right-section">
+          <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+          <p>CLINIC ADDRESS STREET,</p>
+          <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+          <p>Phone No.: 9898988322</p>
+        </div>
+      </header>
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+        <div class="details-row">
+          <div class="details-left">
+            <p>Patient Name:</p>
+            <span id="patientName"></span>
+          </div>
+          <div class="details-right">
+            <p>Patient MRN:</p>
+            <span id="patientMRN"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Age:</p>
+            <span id="patientAge"></span>
+          </div>
+          <div class="details-right">
+            <p>Gender:</p>
+            <span id="patientGender"></span>
+          </div>
+        </div>
+        <div class="details-row">
+          <div class="details-left">
+            <p>Lab No.</p>
+            <span id="assignedCounselor"></span>
+          </div>
+          <div class="details-left">
+            <p>Ref By:</p>
+            <span id=""></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Start  -->
+
+      <div class="d-flex mt-5 gap-5">
+        <div class=" column1">
+          <h5 class="fw-bolder">Before Induction of Anesthesia</h5>
+          <p class="">(With at least nurse and anesthetist)</p>
+
+          <div class="questions">
+            <p>
+              Has the patient confirmed his/her identity, site, procedure, and
+              consent?
+            </p>
+            <label><input type="checkbox" class="me-5" />Yes</label>
+          </div>
+
+          <div class="questions">
+            <p>Is the site marked?</p>
+            <ul>
+              <li>
+                <label><input type="checkbox" class="me-5" />Yes</label>
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" class="me-5" />Not applicable</label
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="questions">
+            <p>Is the anaesthesia machine and medication check complete?</p>
+            <ul>
+              <li>
+                <label><input type="checkbox" class="me-5" />Yes</label>
+              </li>
+            </ul>
+          </div>
+
+          <div class="questions">
+            <p>Is the pulse oximeter on the patient and functioning?</p>
+            <ul>
+              <li>
+                <label><input type="checkbox" class="me-5" />Yes</label>
+              </li>
+            </ul>
+          </div>
+          <div class="questions">
+            <p>Does the pateint have a: Know allegry?</p>
+            <ul>
+              <li>
+                <label><input type="checkbox" class="me-5" />No</label>
+              </li>
+              <li>
+                <label
+                  ><input type="checkbox" class="me-5" />Yes Mention the
+                  allergies</label
+                >
+                <ol type="1" class="p-0">
+                  <li>1.</li>
+                  <li>2.</li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+          <div class="questions">
+            <p>Difficult airways or aspiration risk?</p>
+            <ul>
+              <li>
+                <label><input type="checkbox" class="me-5" />No</label>
+              </li>
+
+              <li>
+                <label
+                  ><input type="checkbox" class="me-5" />Yes, and
+                  equipment/assistance available</label
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="questions">
+            <p>Risk of >500ml blood loss (7ml/kg in children)?</p>
+            <ul>
+              <li>
+                <label><input type="checkbox" class="me-5" />No</label>
+                <label><input type="checkbox" class="me-5" />Yes, and two IVs/central access and fluids planned</label>
+
+              </li>
+            </ul>
+          </div>
+          
+        </div>
+
+        <div class="column2 ">
+          <h5 class="fw-bolder">Before skin incision</h5>
+          <p>(with nurse, anaesthetist and surgeon)</p>
+
+          <div class="questions">
+            <ul>
+                <li><label ><input type="checkbox" class="me-5">confirm all team members have introduced themselves by name and role.</label></li>
+                <li><label class=""><input type="checkbox" class="me-5">Confirm the patient's name, procedure, and wherethe incision will be made.</label></li>
+            </ul>
+          </div>
+
+          <div class="questions">
+            <p class="fw-semibold">Antibiotic Prophylaxis Details:</p>
+            <ul>
+                <li>1. Drug given_____________________</li>
+                <li>2. Time of Administration______________</li>
+            </ul>
+
+            <ul>
+                <li><label for=""><input type="checkbox" class="me-5">Not earlier than 15 minutes of incision (1-15 mi. Acceptable)</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">within minutes of Extraction</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">Neither of Above</label></li>
+           
+            </ul>
+          </div>
+
+            <div class="questions">
+            <p class="fw-semibold">Anticipated critical Events To Surgeon:</p>
+        
+            <ul>
+                <li><label for=""><input type="checkbox" class="me-5">what are the critical or non-routine steps?</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">How long will the case take?</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">what is the anticipated blood loss?</label></li>
+           
+            </ul>
+          </div>
+           <div class="questions">
+            <p class="fw-semibold">To Anaesthetist:</p>
+        
+            <ul>
+                <li><label for=""><input type="checkbox" class="me-5">Are there any patient-specific concerns?</label></li>
+                <span>To Nursing Team:</span>
+                <li><label for=""><input type="checkbox" class="me-5">Has sterility (including indicators)</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">Are there equipment issues or any</label></li>
+           
+            </ul>
+          </div>
+
+           <div class="questions">
+            <p class="fw-semibold">Is essential imaging displayed?</p>
+        
+            <ul>
+                <li><label for=""><input type="checkbox" class="me-5">No</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">Not applicable</label></li>
+           
+            </ul>
+          </div>
+        </div>
+
+        <div class="column3">
+          <h5 class="fw-semibold">Before patient leaves operating room</h5>
+          <p>(with nurse, anaesthetist and surgeon)</p>
+
+
+          <div class="questions">
+            <p class="fw-semibold">Nurse verbally confirms:</p>
+        
+            <ul>
+                <li><label for=""><input type="checkbox" class="me-5">The name of the procedure</li>
+                <li><label for=""><input type="checkbox" class="me-5">completion of instrument, sponge and needle counts</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">Specimen labeling (read specimen labels aloud, Including patient name)</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">whether there are any equipment problems to be addressed</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">N0</label></li>
+                <li><label for=""><input type="checkbox" class="me-5">Yes, Mention________________</label></li>
+
+            </ul>
+          </div>
+
+              <div class="questions">
+            <p class="fw-semibold">Is Surgeon, Anaesthetist and Nurse:</p>
+        
+            <ul>
+                <li><label for=""><input type="checkbox" class="me-5">What are the key concerns for recovery and management of this patient?</li>
+                <li>1.</li>
+                <li>2.</li>
+                <li>3.</li>
+                <li>4.</li>
+                <li>5.</li>
+                <li>6.</li>
+
+            </ul>
+          </div>
+
+          <table class="table table-bordered">
+            <tr>
+                <td>Destination</td>
+                <td>Name</td>
+                <td>Signature</td>
+                <td>Date & Time</td>
+            </tr>
+               <tr>
+                <td>1. Surgeon</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+              <tr>
+                <td>1. Anaesthesiologist</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+              <tr>
+                <td>1. Nurse</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+          </table>
+
+
+        </div>
+      </div>
+      <div class="footer text-center ">
+        <p>
+        <strong>Medicover Healthcare Private Limited:</strong><br>
+        PANCHSHEEL PARK | RAJOURI GARDEN | ROHINI | DWARKA | PLAZA ROAD | PREET VIHAR | GURGAON | FARIDABAD | NOIDA | 
+        GHAZIABAD | ROHTAK | LUDHIANA | ALLAHABAD | CHANDIGARH | HYDERABAD | SRINAGAR
+        <br>
+        www.medicoverfertility.in
+        </p>
+        
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

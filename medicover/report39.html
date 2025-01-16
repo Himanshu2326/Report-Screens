@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Consent of Patient Representative/Surrogate</title>
+      <link
+         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+         rel="stylesheet"
+         />
+      <link
+         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+         rel="stylesheet"
+         />
+      <style>
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         /* font-family: Arial, sans-serif; */
+         }
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         h1 {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 600;
+         /* Use different weights based on your need */
+         }
+         h2{
+         font-weight: 600;
+         text-align: center;
+         margin-bottom: 30px;
+         margin-bottom: 2rem;
+         text-transform: uppercase;
+         }
+         .hr_line {
+         margin-top: 32px;
+         }
+         p {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 400;
+         }
+         li{
+            list-style: none;
+         }
+         .container {
+         padding: 20px;
+         }
+         .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         }
+         .left-section {
+         font-size: 14px;
+         }
+         .left-section p {
+         margin-bottom: 5px;
+         font-weight: 600;
+         }
+         .left-section span {
+         font-weight: bold;
+         }
+         .logo-section {
+         margin-left: 140px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         margin-left: 228px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         text-align: center;
+         }
+         .logo-section img {
+         width: 350px;
+         height: auto;
+         }
+         label {
+         display: inline-block;
+         font-size: 16px;
+         font-weight: 600;
+         color: #160647;
+         }
+         table thead tr th {
+         background: #f2f2f2 !important;
+         /* font-size: 20px; */
+         }
+         table tbody tr th {
+         font-weight: 400;
+         }
+         .td-width {
+         width: 60%;
+         }
+         .right-section {
+         text-align: right;
+         font-size: 14px;
+         }
+         .right-section p {
+         margin-bottom: 5px;
+         }
+         .right-section strong {
+         font-size: 16px;
+         font-weight: bold;
+         }
+         .details-section {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .details-row {
+         display: flex;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 10px 0;
+         }
+         .details-left,
+         .details-right {
+         flex: 1;
+         display: flex;
+         gap: 10px;
+         justify-content: space-between;
+         }
+         .details-left p,
+         .details-right p {
+         font-size: 16px;
+         font-weight: 600;
+         }
+         .details-left span,
+         .details-right span {
+         font-weight: bold;
+         margin-left: 10px;
+         color: #646363;
+         border-bottom: #8d8b8b 1px solid;
+         flex: 1;
+         }
+         .health-table-section {
+         margin-top: 20px;
+         }
+         .sample-info-left,
+         .sample-info-right {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 7px;
+         }
+         .sample-info-left p,
+         .sample-info-right p {
+         font-size: 15px;
+         color: #444;
+         /* margin-bottom: 5px; */
+         font-weight: 600;
+         }
+         .sample-info-left span,
+         .sample-info-right span {
+         margin-left: 10px;
+         font-weight: 500;
+         color: #646363;
+         }
+         .chart-container {
+         width: 100%;
+         max-width: 300px;
+         margin: auto;
+         max-height: auto;
+         }
+         canvas {
+         margin-bottom: 40px;
+         }
+         .bar-chart {
+         height: 400px;
+         margin-bottom: 0;
+         }
+         .doctor-name {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: 60px 0;
+         p {
+         font-weight: 500;
+         }
+         }
+         .details,
+         .content {
+         margin-top: 20px;
+         }
+         label {
+         font-weight: 600;
+         color: #160647;
+         }
+         .table {
+         margin-top: 20px;
+         margin-bottom: 20px;
+         }
+         .fw-bold {
+         font-weight: 500 !important;
+         }
+         .mb-3 {
+         margin-bottom: 1rem;
+         }
+         .underline {
+         border-bottom: 1px solid #8d8b8b;
+         display: inline-block;
+         width: 400px;
+         height: 1.5em;
+       
+         }
+          .underline2 {
+         border-bottom: 1px solid #8d8b8b;
+         display: inline-block;
+         width: 200px;
+         height: 1.5em;
+       
+         }
+         .treatment-list li {
+         margin-bottom: 10px;
+         }
+         .signature {
+         margin-top: 40px;
+         }
+         .center_text_data {
+         text-align: center;
+         }
+         /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+         .custom-underline {
+         display: flex;
+         align-items: end;
+         white-space: nowrap;
+         }
+         .custom-underline .underline {
+         display: block;
+         flex-grow: 1;
+         height: 1px; /* Thickness of the underline */
+         background-color: #8d8b8b; /* Color of the underline */
+         margin-left: 10px; /* Space between text and underline */
+         }
+         .fullwidth{
+         margin-bottom: 1.5rem;
+         }
+         .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         cursor: pointer;
+         }
+         .brif-medical-hisrory .underline{
+         margin-bottom: 1.5rem;
+         }
+
+       
+        .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .section ol li{
+        margin-bottom: 15px;
+    }
+    .signature-section .underline{
+        width: 100%;
+    }
+    .third-col p{
+        border-bottom: 1px solid #8d8b8b;
+    }
+      </style>
+   </head>
+   <body>
+      <div class="container mt-4">
+      <h2>Consent of Patient Representative/Surrogate</h2>
+      <header class="header-container">
+         <div class="left-section">
+            <p>Date: <span id="formattedDate"></span></p>
+         </div>
+         <div class="logo-section">
+            <img src="../images/logo.png" alt="lifelinkr Logo" />
+         </div>
+         <div class="right-section">
+            <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+            <p>CLINIC ADDRESS STREET,</p>
+            <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+            <p>Phone No.: 9898988322</p>
+         </div>
+      </header>
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+         <div class="details-row">
+            <div class="details-left">
+               <p>Patient Name:</p>
+               <span id="patientName"></span>
+            </div>
+            <div class="details-right">
+               <p>Patient MRN:</p>
+               <span id="patientMRN"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Age:</p>
+               <span id="patientAge"></span>
+            </div>
+            <div class="details-right">
+               <p>Gender:</p>
+               <span id="patientGender"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Lab No.</p>
+               <span id="assignedCounselor"></span>
+            </div>
+            <div class="details-left">
+               <p>Ref By:</p>
+               <span id=""></span>
+            </div>
+         </div>
+      </div>
+
+          <!-- Form Start  -->
+        <div class="section-title my-4">Consent of Patient Representative/Surrogate</div>
+
+        <div class="section">
+             <p >The Patient is unable to consent because<span class="underline"></span>and hence I, <span class="underline"></span>(name relationship with PL) therefore give my consent on behalf of the patient after discussion with the Doctor for the above mentioned Surgery/Procedure.</p>
+
+             <table class="table table-bordered" style="table-layout: fixed;">
+                <tr>
+                    <th></th>
+                    <th style="width: 350px;">Name</th>
+                    <th>Signature</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Patient/Patient Surrogate</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                 <tr>
+                    <td>Witness</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                 <tr>
+                    <td>Doctor</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                 <tr>
+                    <td>Interpreter</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+             </table>
+        </div>
+    
+        <table class="section border table table-bordered " style="table-layout: fixed;">
+            <caption class="fw-semibold text-center py-2 m-0 caption-top border text-black">Department of Anaesthesiology <br> PRE-ANASTHETIC EVALUATION FORM</caption>
+            
+            <tr>
+               
+                 <td colspan="5"></td>
+                <td>Date</td>
+            </tr>
+             <tr>
+                <td>Age</td>
+                <td>Gender:M/F</td>
+                 <td colspan="2">UHID NO:</td>
+                <td colspan="2">IP No. :</td>
+            </tr>
+            <tr>
+                <td colspan="3">Diagnosis</td>
+                <td colspan="3">Purpose Surgery</td>  
+            </tr>
+             <tr>
+                <td colspan="3">Anaesthetist</td>
+                <td colspan="3">Surgeon</td>  
+            </tr>
+            <tr>
+                <td colspan="3">Previous Anaesthesia/ICU care</td>
+                <td colspan="3">Allergies:</td>  
+            </tr>
+             <tr class="fw-semibold text-center">
+                <td colspan="4">MEDICALHISTORY/EXAMINATION</td>
+                <td colspan="2">INVESTIGATIONS</td>  
+            </tr>
+            <tr>
+                <td colspan="2" class="p-0">
+                    <div class="input-box px-4 py-2 border-bottom">
+                        <p class="fw-bold">Respiratort System</p>
+                    <div class="row ">
+                        <div class="col-6"><input type="checkbox" class="me-2">Recent URTI</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Allergic Pronchitis</div>
+                    </div>
+                     <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">Asthma</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Others</div>
+                    </div>
+                    </div>
+
+                     <div class="input-box px-4 py-2 border-bottom">
+                        <p class="fw-bold">CVS</p>
+                    <div class="row ">
+                        <div class="col-6"><input type="checkbox" class="me-2">Hypertension</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">IHD</div>
+                    </div>
+                     <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">RHO/Valvular</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Arrhythmia</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">Post CABG</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">CCF</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">Other</div>
+                         
+                    </div>
+                    </div>
+
+
+                    <div class="input-box px-4 py-2 border-bottom">
+                        <p class="fw-bold">Endocrine</p>
+                    <div class="row ">
+                        <div class="col-6"><input type="checkbox" class="me-2">Diabetes</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Hypo/Hyperthyoid</div>
+                    </div>
+                     <div class="row">
+                    
+                         <div class="col-6"><input type="checkbox" class="me-2">Others</div>
+                    </div>
+                    </div>
+
+
+                    <div class="input-box px-4 py-2 border-bottom">
+                        <p class="fw-bold">Hepatic/Renal</p>
+                    <div class="row ">
+                        <div class="col-6"><input type="checkbox" class="me-2">Jaundice</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Hepatitis</div>
+                    </div>
+                     <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">ARF/CRF</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Others</div>
+                    </div>
+                    </div>
+
+                    <div class="input-box px-4 py-2 border-bottom">
+                        <p class="fw-bold">CNS/Musculoskeletal</p>
+                    <div class="row ">
+                        <div class="col-6"><input type="checkbox" class="me-2">CVA/Stroke </div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Epileptic</div>
+                    </div>
+                     <div class="row">
+                        <div class="col-12"><input type="checkbox" class="me-2">Neuro Muscular Disorders</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Others</div>
+                    </div>
+                    </div>
+
+
+                    
+                    <div class="input-box px-4 py-2 ">
+                        <p class="fw-bold">Others</p>
+                    <div class="row ">
+                        <div class="col-6"><input type="checkbox" class="me-2">Anemia </div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Pregnancy</div>
+                    </div>
+                     <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">Blood Disorder</div>
+                         <div class="col-6"><input type="checkbox" class="me-2">Chemotherapy</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><input type="checkbox" class="me-2">Differently Abled</div>
+                         <div class="col-12"><input type="checkbox" class="me-2">Psychiatric Disorder</div>
+                    </div>
+                    </div>
+                
+                </td>
+                <td colspan="2" class="my-auto position-relative" >
+                    <div class="text-center position-absolute left-0" style="top: 25%;">
+                        <p>..................................................................</p>
+                        <p class="fw-semibold">Medication:</p>
+                        <p>..................................................................</p>
+
+                        <p class="fw-semibold">General Examination</p>
+                        <div class="fw-semibold d-flex mx-auto  column-gap-5 row-gap-3 flex-wrap  justify-content-center w-50">
+                            <span>Built</span>
+                            <span>Wt.</span>
+                            <span>Ht.</span>
+                            <span>HR</span>
+                            <span>BP</span>
+                            <span>SPO2</span>
+                        </div>
+
+                        <p class="mt-5">Pallor / Oedeme lcterus/ Others</p>
+                    </div>
+
+                </td> 
+                <td colspan="2" class="third-col p-0">
+                    <div class="">
+                        <p class="p-2 m-0" >Blood group</p>
+                        <p class="p-2 m-0">Hb% </p>
+                        <p class="p-2 m-0">Hb% </p>
+                         <p class="p-2 m-0" >PT/INR </p>
+                        <p class="p-2 m-0">aPT </p>
+                        <p class="p-2 m-0">FBS/RBS </p>
+                         <p class="p-2 m-0" >Hb/AC </p>
+                        <p class="p-2 m-0">BUN/S.Creat </p>
+                        <p class="p-2 m-0 border-0">Na+/K+ </p>
+                         <p class="p-2 m-0" >HIV/HbsAg </p>
+                        <p class="p-2 m-0 border-0">TFT </p>
+                        <p class="p-2 m-0">(TSH______) </p>
+                        <p class="p-2 m-0 border-0">CRX/ECG/Echo </p>
+                    </div>
+                    
+                </td> 
+            </tr>
+
+            <tr class="fw-semibold">
+                <td colspan="2">Airway Assisment</td>
+                <td colspan="2">Spine</td>
+                <td colspan="2">Others</td>
+            </tr>
+             <tr>
+                <td colspan="2">
+                  <ul>
+                    <li>Mallamplat</li>
+                    <li>Teeth</li>
+                    <li>Mouth Opening</li>
+                    <li>Neck Movement</li>
+                    <li>Dentures</li>
+                  </ul>
+                </td>
+                <td colspan="2">
+                    <ul>
+                    <li>Mallamplat</li>
+                    <li>Teeth</li>
+                    <li>Mouth Opening</li>
+                    <li>Neck Movement</li>
+                    <li>Dentures</li>
+                  </ul>
+                </td>
+                <td colspan="2">
+                    <ul>
+                        <li>Anaesthesia Risk Factors</li>
+                    </ul>
+                </td>
+            </tr>
+             <tr class="fw-semibold ">
+                <td colspan="2">Anaesthesia Plan: </td>
+                <td colspan="2"></td>
+                <td colspan="2" class="text-center">ASGA Grading <br> 1 2 3 4 E</td>
+            </tr>
+             <tr class="fw-semibold ">
+                <td colspan="2">Premeditations/Instructions: </td>
+                <td colspan="2"></td>
+                <td colspan="2" class="text-center">Name/Signatureof Evaluating Doctor</td>
+            </tr>
+        </table>
+
+
+        <div class="footer text-center mt-5">
+        <p>
+        <strong>Medicover Healthcare Private Limited:</strong><br>
+        PANCHSHEEL PARK | RAJOURI GARDEN | ROHINI | DWARKA | PLAZA ROAD | PREET VIHAR | GURGAON | FARIDABAD | NOIDA | 
+        GHAZIABAD | ROHTAK | LUDHIANA | ALLAHABAD | CHANDIGARH | HYDERABAD | SRINAGAR
+        <br>
+        www.medicoverfertility.in
+        </p>
+        
+    </div>
+
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
+</html>
