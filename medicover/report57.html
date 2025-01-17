@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Acknowledgement</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+ <style>
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         /* font-family: Arial, sans-serif; */
+         }
+         body {
+         font-family: "Montserrat", sans-serif;
+         }
+         h1 {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 600;
+         /* Use different weights based on your need */
+         }
+         h2{
+         font-weight: 600;
+         text-align: center;
+         margin-bottom: 30px;
+         margin-bottom: 2rem;
+         text-transform: uppercase;
+         }
+         .hr_line {
+         margin-top: 32px;
+         }
+         p {
+         font-family: "Montserrat", sans-serif;
+         font-weight: 400;
+         }
+         .container {
+         padding: 20px;
+         }
+         .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         }
+         .left-section {
+         font-size: 14px;
+         }
+         .left-section p {
+         margin-bottom: 5px;
+         font-weight: 600;
+         }
+         .left-section span {
+         font-weight: bold;
+         }
+         .logo-section {
+         margin-left: 140px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         margin-left: 228px;
+         margin-top: -30px;
+         }
+         .logo-section {
+         text-align: center;
+         }
+         .logo-section img {
+         width: 350px;
+         height: auto;
+         }
+         label {
+         display: inline-block;
+         font-size: 16px;
+         font-weight: 600;
+         color: #160647;
+         }
+         table thead tr th {
+         background: #f2f2f2 !important;
+         /* font-size: 20px; */
+         }
+         table tbody tr th {
+         font-weight: 400;
+         }
+         .td-width {
+         width: 60%;
+         }
+         .right-section {
+         text-align: right;
+         font-size: 14px;
+         }
+         .right-section p {
+         margin-bottom: 5px;
+         }
+         .right-section strong {
+         font-size: 16px;
+         font-weight: bold;
+         }
+         .details-section {
+         display: flex;
+         flex-direction: column;
+         gap: 15px;
+         }
+         .details-row {
+         display: flex;
+         justify-content: space-between;
+         gap: 40px;
+         padding: 10px 0;
+         }
+         .details-left,
+         .details-right {
+         flex: 1;
+         display: flex;
+         gap: 10px;
+         justify-content: space-between;
+         }
+         .details-left p,
+         .details-right p {
+         font-size: 16px;
+         font-weight: 600;
+         }
+         .details-left span,
+         .details-right span {
+         font-weight: bold;
+         margin-left: 10px;
+         color: #646363;
+         border-bottom: #8d8b8b 1px solid;
+         flex: 1;
+         }
+         .health-table-section {
+         margin-top: 20px;
+         }
+         .sample-info-left,
+         .sample-info-right {
+         flex: 1;
+         display: flex;
+         flex-direction: column;
+         gap: 7px;
+         }
+         .sample-info-left p,
+         .sample-info-right p {
+         font-size: 15px;
+         color: #444;
+         /* margin-bottom: 5px; */
+         font-weight: 600;
+         }
+         .sample-info-left span,
+         .sample-info-right span {
+         margin-left: 10px;
+         font-weight: 500;
+         color: #646363;
+         }
+         .chart-container {
+         width: 100%;
+         max-width: 300px;
+         margin: auto;
+         max-height: auto;
+         }
+         canvas {
+         margin-bottom: 40px;
+         }
+         .bar-chart {
+         height: 400px;
+         margin-bottom: 0;
+         }
+         .doctor-name {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin: 60px 0;
+         p {
+         font-weight: 500;
+         }
+         }
+         .details,
+         .content {
+         margin-top: 20px;
+         }
+         label {
+         font-weight: 600;
+         color: #160647;
+         }
+         .table {
+         margin-top: 20px;
+         margin-bottom: 20px;
+         }
+         .fw-bold {
+         font-weight: 500 !important;
+         }
+         .mb-3 {
+         margin-bottom: 1rem;
+         }
+         .underline {
+         border-bottom: 1px solid #000;
+         display: inline-block;
+         width: 317px;
+         height:  1.5em;
+         vertical-align: bottom;
+         }
+         .treatment-list li {
+         margin-bottom: 10px;
+         }
+         .signature {
+         margin-top: 40px;
+         }
+         .center_text_data {
+         text-align: center;
+         }
+         /* Target only the custom-underline class to avoid conflicts with Bootstrap */
+         .custom-underline {
+         display: flex;
+         align-items: end;
+         white-space: nowrap;
+         }
+         .custom-underline .underline {
+         display: block;
+         flex-grow: 1;
+         height: 1px; /* Thickness of the underline */
+         background-color: #000; /* Color of the underline */
+         margin-left: 10px; /* Space between text and underline */
+         }
+         .fullwidth{
+         margin-bottom: 1.5rem;
+         }
+         .tick_box{
+         display: inline-block;
+         border: 2px solid black;
+         height: 25px;
+         width: 35px;
+         cursor: pointer;
+         }
+         .brif-medical-hisrory .underline{
+         margin-bottom: 1.5rem;
+         }
+
+       
+        .section-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .section ol li{
+        margin-bottom: 15px;
+    }
+    .signature-section .underline{
+        width: 100%;
+    }
+      </style>
+</head>
+<body>
+  <div class="container mt-4">
+
+    <h2>Medical Acknowledgement</h2>
+      <header class="header-container">
+         <div class="left-section">
+            <p>Date: <span id="formattedDate"></span></p>
+         </div>
+         <div class="logo-section">
+            <img src="../images/logo.png" alt="lifelinkr Logo" />
+         </div>
+         <div class="right-section">
+            <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+            <p>CLINIC ADDRESS STREET,</p>
+            <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+            <p>Phone No.: 9898988322</p>
+         </div>
+      </header>
+      <!-------Patient Details Section-------->
+      <div class="details-section mb-4">
+         <div class="details-row">
+            <div class="details-left">
+               <p>Patient Name:</p>
+               <span id="patientName"></span>
+            </div>
+            <div class="details-right">
+               <p>Patient MRN:</p>
+               <span id="patientMRN"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Age:</p>
+               <span id="patientAge"></span>
+            </div>
+            <div class="details-right">
+               <p>Gender:</p>
+               <span id="patientGender"></span>
+            </div>
+         </div>
+         <div class="details-row">
+            <div class="details-left">
+               <p>Lab No.</p>
+               <span id="assignedCounselor"></span>
+            </div>
+            <div class="details-left">
+               <p>Ref By:</p>
+               <span id=""></span>
+            </div>
+         </div>
+      </div>
+
+          <!-- Form Start  -->
+    <div class="header mb-5">
+      <p>Registration No Female: ______________________________________</p>
+      <p>Registration No Male: ________________________________________</p>
+      <p>Cycle No: ____________________________________________________</p>
+    </div>
+
+
+    <p>and negligent act or omission of Medicover Fertility and there shall be no presumption of liability upon Medicover Fertility by reason of such loss, damage or destruction as aforesaid. That the eggs, embryos or sperm can only be used according to the specific conditions laid down by applicable law. I/we acknowledge that it is my/our responsibility to inform Medicover Fertility of any change of address or contact details. I/we understand that I/we will be asked, on a yearly basis, to confirm my/our wishes regarding continued storage within the maximum consented time period, and that an annual fee for storage is payable for each storage year, or part thereof.
+</p>
+<p>(Embryos only) Continued storage of our embryos requires valid consent from both of us.
+</p>
+    
+
+
+  
+    <table class="table table-bordered" style="table-layout: fixed;">
+        
+        <tbody>
+            <tr>
+                <td style="width: 50%;">Consent of Embroyolohy Services</td>
+                <td >Patient</td>
+                <td>Partner</td>
+                <td>Date</td>
+            </tr>
+
+              <tr>
+                <td>Creation of Embroys using In-vitro Fertilization (IVF/ ICSI)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+              <tr>
+                <td>Blastocyst Culture(If applicable)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+              <tr>
+                <td>Consent of Fresh Embroy/Blastocyst Transfer</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+              <tr>
+                <td>A Maximum of _______ embroys to be placed in my uterus</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+             <tr>
+                <td>A Maximum of _______ blastocyst to be placed in my uterus</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+
+    <p class="fw-semibold my-5"> I/we understand that no assurance can be given regarding the survival of any eggs, embryos, blastocysts or sperm following the freezing/storage/thawing process and that fertilization will not necessarily result from the insemination by any thawed gametes. I/we also understand that any embryo resulting from the procedure may not be suitable for transfer.
+</p>
+    <table class="table table-bordered">
+        <tr>
+            <td style="width: 50%;">Consent to Freezing/Storage/Thawing/Use/Re-Freezing</td>
+            <td>Patient</td>
+            <td>Partner</td>
+            <td>Date</td>
+        </tr>
+        <tr>
+            <td>Eggs</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>Embryos (includes blastocyst stage embryos) </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Sperm</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+    <table class="table table-bordered">
+        
+              <tr>
+                <td style="width: 50%;">Consent of Fresh Embroy/Blastocyst Transfer</td>
+                 <td>Patient</td>
+                <td>Partner</td>
+                <td>Date</td>
+            </tr>
+
+              <tr>
+                <td>A Maximum of _______ embroys to be placed in my uterus</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+             <tr>
+                <td>A Maximum of _______ blastocyst to be placed in my uterus</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table>
+
+     <table class="table table-bordered">
+        
+              <tr>
+                <td style="width: 50%;">Consent to Stimulation and Egg Collection</td>
+                <td>Patient</td>
+                <td>Partner</td>
+                <td>Date</td>
+            </tr>
+
+              <tr>
+                <td>Egg retrieval (IVF)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+             <tr>
+                <td>Catheterization (if required)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Any further operative measures found to be necessary in the course of treatment</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table>
+
+
+      <table class="table table-bordered">
+        
+              <tr>
+                <td style="width: 50%;">Consent to Surgical and Assisted Sperm Retrieval Procedures</td>
+                <td>Patient</td>
+                <td>Partner</td>
+                <td>Date</td>
+            </tr>
+
+              <tr>
+                <td>Surgical sperm retrieval (PESA, TESA or TESE)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+             <tr>
+                <td>Assisted retrieval - Vibro Stimulator</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Catheterization (if required)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>Any further operative measures found to be necessary in the course of treatment</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+    </table>
+
+    <div class="border p-2">
+      <p class="fw-bolder">IMPORTANT FOR SURGICAL AND ASSISTED SPERM RETREIVAL ONLY</p>
+      <p>I/we understand that there is no guarantee that sperm will be successfully retrieved or that sperm will necessarily fertilize our eggs. Should the sperm retrieval fail, I/we have the following options available for the retrieved oocytes. In the event that donor sperm is required, separate consent forms will be provided (in addition to the section below.)</p>
+    </div>
+
+     <table class="table table-bordered">
+        
+              <tr>
+                <td style="width: 50%;"></td>
+                <td>Patient</td>
+                <td>Partner</td>
+                <td>Date</td>
+            </tr>
+
+              <tr>
+                <td>Insemination of all or some eggs using donor sperm</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+             <tr>
+                <td>Freezing of all suitable eggs only</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Disposal of eggs according to ethical guidelines</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+          
+    </table>
+
+    <p>Further to the acknowledgements given at the beginning of this consent form, I/we understand that no liability shall fall upon Medicover Fertility for any interruption to my treatment or for the loss, damage or destruction of my eggs, embryos or sperm caused by accident, fire, storm, tempest, theft, acts of God, acts of war, failure of supplies, strikes, lock outs, sabotage, floods or otherwise howsoever other than by specific. </p>
+
+   
+   
+    <!-- Patient and Husband Signatures -->
+    <div class="signature-section d-flex justify-content-between " style="margin-top: 100px;">
+        <span>Patient's Signature</span>
+        <span>Husband Signature</span>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

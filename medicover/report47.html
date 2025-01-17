@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Form 1-a</title>
-      <link
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welfare of Child Form</title>
+   <link
          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
          rel="stylesheet"
          />
@@ -12,8 +12,8 @@
          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
          rel="stylesheet"
          />
-      <style>
-         body {
+  <style>
+     body {
          font-family: "Montserrat", sans-serif;
          }
          * {
@@ -199,17 +199,10 @@
          margin-bottom: 1rem;
          }
          .underline {
-         border-bottom: 1px solid #000;
+         border-bottom: 1px solid #646363;
          display: inline-block;
          width: 300px;
-         height: 1.5em;
-         vertical-align: bottom;
-         }
-          .underline2 {
-         border-bottom: 1px solid #000;
-         display: inline-block;
-         width: 200px;
-         height:  1.5em;
+         height: 1.2em;
          vertical-align: bottom;
          }
          .treatment-list li {
@@ -224,47 +217,91 @@
          /* Target only the custom-underline class to avoid conflicts with Bootstrap */
          .custom-underline {
          display: flex;
-         align-items: end;
+         align-items: baseline;
          white-space: nowrap;
          }
          .custom-underline .underline {
          display: block;
          flex-grow: 1;
          height: 1px; /* Thickness of the underline */
-         background-color: #000; /* Color of the underline */
+         background-color: #646363; /* Color of the underline */
          margin-left: 10px; /* Space between text and underline */
          }
          .fullwidth{
          margin-bottom: 1.5rem;
          }
-         .tick_box{
-         display: inline-block;
-         border: 2px solid black;
-         height: 25px;
-         width: 35px;
-         cursor: pointer;
-         }
-         .brif-medical-hisrory .underline{
-         margin-bottom: 1.5rem;
-         }
-
-       
-        .section-title {
+    .header, .section {
+      margin-bottom: 20px;
+    }
+    .header span{
+        display: block;
+        margin-top: 15px;
+    }
+   
+    .section-title {
       font-weight: bold;
       margin-bottom: 10px;
       text-align: center;
     }
-    .section ol li{
-        margin-bottom: 15px;
+    .question {
+      margin-top: 15px;
     }
-    .signature-section .underline{
-        width: 100%;
+    .input-row {
+      margin-bottom: 15px;
     }
-      </style>
-   </head>
-   <body>
-      <div class="container mt-4">
-      <h2>Form I-a</h2>
+    .input-row label {
+      display: inline-block;
+      width: 150px;
+    }
+    .input-row input {
+      border: none;
+      border-bottom: 1px solid #646363;
+      width: calc(100% - 160px);
+      padding: 5px;
+    }
+    .yes-no {
+      
+      display: flex;
+     align-items: center;
+    gap: 12px
+    }
+    .textarea {
+      width: 100%;
+      border: 1px solid #646363;
+      padding: 5px;
+      margin-top: 10px;
+      height: 50px;
+    }
+    .signature-section {
+      margin-top: 30px;
+      padding-bottom: 30px;
+    }
+    .signature-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .signature-box {
+
+      display: flex;
+    
+      align-items: baseline;
+    
+    }
+    .signature-box span {
+        display: inline-block;
+      padding-top: 10px;
+      margin-top: 40px;
+    }
+    .question.d-flex.justify-content-between{
+      gap: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+     <h2>Welfare of Child</h2>
       <header class="header-container">
          <div class="left-section">
             <p>Date: <span id="formattedDate"></span></p>
@@ -313,41 +350,128 @@
          </div>
       </div>
 
-          <!-- Form Start  -->
+      <!-- Form Start  -->
     <div class="header">
-      <p>Registration No Female: ______________________________________</p>
-      <p>Registration No Male: ________________________________________</p>
-      <p>Cycle No: ____________________________________________________</p>
+      <span>Registration No Female: ______________________________________</span>
+      <span>Registration No Male: ________________________________________</span>
+      <span>Cycle No: ____________________________________________________</span>
+      <span>Date: ________________________________________________________</span>
     </div>
-    <br>
+
+   
 
     <div class="section">
-        <p>I/We have been given a suitable opportunity to take part in counselling about the implications of the proposed treatment.</p>
-        <p>The type of anaesthetic proposed (general/regional/sedation) has been discussed in terms which I have understood. Endorsement by Medicover Fertility (the ART Clinic)</p>
-        <p>I/we have personally explained to <span class="underline"></span> and <span class="underline"></span>the details and implications of her signing this consent/approval form, and made sure to the extent humanly possible that she understands these details and implications.</p>
-    </div>
+      
 
-
-    <div class="section">
-        <p style="display: flex; align-items: baseline;">Name and signature of Wife:<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Complete Address<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Name, address & signature of the Witness<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Name and signature of the Doctor<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Name and address of the ART clinic<span style="flex-grow: 1;" class="underline"></span></p>
-    </div>
-
-    <p>As the husband/partner, I consent to the course of the treatment outlined above. I understand that I will become the legal parent of any resulting child, and that the child will have all the normal legal rights on me.</p>
-    <br>
-    <br>
-     <div class="section mb-5">
-        <p style="display: flex; align-items: baseline;">Name and signature of Husband:<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Complete Address<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Name, address & signature of the Witness<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Name and signature of the Doctor<span style="flex-grow: 1;" class="underline"></span></p>
-        <p style="display: flex; align-items: baseline;">Name and address of the ART clinic<span style="flex-grow: 1;" class="underline"></span></p>
+       <div class="question-box">
+        <div class="question d-flex justify-content-between">
+       <div>
+        <p> 7. Are there any other aspects of your life or medical history which may pose a risk of serious harm to any child you might have or anything which might impair your ability to care for such a child? </p>
+       </div>
+       <div class="d-flex gap-5">
+         <span class="yes-no">Yes <input type="radio" name="question1"></span>
+        <span class="yes-no">No <input type="radio" name="question1"></span>
+       </div>
       </div>
 
-      <p class="my-5">Date:</p>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-   </body>
+      <p>If Yes Please give details:</p>
+        <p style="display: flex; align-items: baseline;margin-bottom: 0;"><span style="flex-grow: 1;" class="underline"></span></p>
+      </div>
+
+    </div>
+
+    <div class="signature-section">
+      <div class="signature-row">
+        <div class="signature-box">
+          <span>Signature</span><span class="underline"></span>
+        </div>
+        <div class="signature-box">
+          <span>Date</span><span class="underline"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section mt-5">
+        <div class="section-title">For Office Use</div>
+         <div class="question-box">
+        <div class="question d-flex justify-content-between">
+       <div>
+        <p> Is there any concern that the prospective parents may not be supportive parents (ie, that they show a lack of commitment to the health, well-being and development of the prospective child)?
+ </p>
+       </div>
+       <div class="d-flex gap-5">
+         <span class="yes-no">Yes <input type="radio" name="question1"></span>
+        <span class="yes-no">No <input type="radio" name="question1"></span>
+       </div>
+      </div>
+
+      <p>If yes, please specify if and how the wider family and social networks within which the child will be raised have been taken
+into account.</p>
+        <p style="display: flex; align-items: baseline;margin-bottom: 0;"><span style="flex-grow: 1;" class="underline"></span></p>
+    
+         </div>
+
+         <div class="question-box">
+        <div class="question d-flex justify-content-between">
+       <div>
+        <p> Further information sought?</p>
+       </div>
+       <div class="d-flex gap-5">
+         <span class="yes-no">Yes <input type="radio" name="question1"></span>
+        <span class="yes-no">No <input type="radio" name="question1"></span>
+       </div>
+      </div>
+
+      <p>If yes, a) grounds for seeking information, b) type of information sought and c) source of information. (GP, social services etc.).</p>
+        <p style="display: flex; align-items: baseline;margin-bottom: 0;"><span style="flex-grow: 1;" class="underline"></span></p>
+         </div>
+
+         <div class="question-box">
+        <div class="question d-flex justify-content-between">
+       <div>
+        <p> Response from information source:</p>
+       </div>
+       <div class="d-flex gap-5">
+         <span class="yes-no">Yes <input type="radio" name="question1"></span>
+        <span class="yes-no">No <input type="radio" name="question1"></span>
+       </div>
+      </div>
+
+      <p>Further action taken?</p>
+        <p style="display: flex; align-items: baseline;margin-bottom: 0;"><span style="flex-grow: 1;" class="underline"></span></p>
+         </div>
+
+         <div class="question-box">
+        <div class="question d-flex justify-content-between">
+       <div>
+        <p> If yes, please specify what action:</p>
+       </div>
+       <div class="d-flex gap-5">
+         <span class="yes-no">Yes <input type="radio" name="question1"></span>
+        <span class="yes-no">No <input type="radio" name="question1"></span>
+       </div>
+      </div>
+
+      <p>Treatment offered?</p>
+        <p style="display: flex; align-items: baseline;"><span style="flex-grow: 1;" class="underline"></span></p>
+
+      <p>If no, give grounds for refusal and any steps patient(s) could take to reconsider the decision</p>
+        <p style="display: flex; align-items: baseline;margin-bottom: 0;"><span style="flex-grow: 1;" class="underline"></span></p>
+         </div>
+    </div>
+
+       <div class="signature-section">
+      <div class="signature-row">
+    
+        <div class="signature-box">
+          <span>Patient Signature</span><span class="underline"></span>
+        </div>
+        <div class="signature-box">
+          <span>Husband Signature</span><span class="underline"></span>
+        </div>
+      </div>
+    </div>
+     
+  </div>
+</body>
 </html>
