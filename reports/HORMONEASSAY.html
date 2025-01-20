@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        .table2 {
+            width: 100%;
+            border: 1px solid #dee2e6;
+            border-collapse: collapse;
+        }
+
+        .table2 th,
+        .table2 td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .fw-bold {
+            font-weight: bold;
+        }
+
+        .btn-style {
+            font-size: 0.9rem;
+            padding: 4px 10px;
+        }
+    </style>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* font-family: Arial, sans-serif; */
+        }
+
+        body {
+            font-family: "Montserrat", sans-serif;
+        }
+
+        h1 {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            /* Use different weights based on your need */
+        }
+
+        p {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .left-section {
+            font-size: 14px;
+        }
+
+        .left-section p {
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .left-section span {
+            font-weight: bold;
+        }
+
+        .logo-section {
+            margin-left: 140px;
+            margin-top: -30px;
+        }
+
+        .logo-section {
+            margin-left: 145px;
+            margin-top: -30px;
+        }
+
+        .logo-section {
+            text-align: center;
+        }
+
+        .logo-section img {
+            width: 350px;
+            height: auto;
+        }
+
+        label {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 600;
+            color: #160647;
+        }
+
+        table thead tr th {
+            background: #f2f2f2 !important;
+        }
+
+        .td-width {
+            width: 60%;
+        }
+
+        .right-section {
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .right-section p {
+            margin-bottom: 5px;
+        }
+
+        .right-section strong {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .details-section {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .details-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            padding: 10px 0;
+        }
+
+        .details-left,
+        .details-right {
+            flex: 1;
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+        }
+
+        .details-left p,
+        .details-right p {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .details-left span,
+        .details-right span {
+            font-weight: bold;
+            margin-left: 10px;
+            color: #646363;
+            border-bottom: #8d8b8b 1px solid;
+            flex: 1;
+        }
+
+        .health-table-section {
+            margin-top: 20px;
+        }
+
+        .sample-info-left,
+        .sample-info-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .sample-info-left p,
+        .sample-info-right p {
+            font-size: 15px;
+            color: #444;
+            /* margin-bottom: 5px; */
+            font-weight: 600;
+        }
+
+        .sample-info-left span,
+        .sample-info-right span {
+            margin-left: 10px;
+            font-weight: 500;
+            color: #646363;
+        }
+
+        .chart-container {
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+            max-height: auto;
+        }
+
+        canvas {
+            margin-bottom: 40px;
+        }
+
+        .bar-chart {
+            height: 400px;
+            margin-bottom: 0;
+        }
+
+        .doctor-name {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 60px 0;
+
+            p {
+                font-weight: 500;
+            }
+        }
+
+        .details,
+        .content {
+            margin-top: 20px;
+        }
+
+        .content h3 {
+            text-align: center;
+            margin: 10px 0;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .footer {
+            margin-top: 80px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <h2 class="text-center fw-bold mb-4"></h2>
+
+        <header class="header-container">
+            <div class="left-section">
+                <p>Date: <span id="formattedDate"></span></p>
+            </div>
+            <div class="logo-section">
+                <img src="../images/logo.png" alt="lifelinkr Logo" />
+            </div>
+            <div class="right-section">
+                <p><strong>IVF CLINIC - CLINIC ADDRESS</strong></p>
+                <p>CLINIC ADDRESS STREET,</p>
+                <p>CLINIC ADDRESS , CITY AND PINCODE</p>
+                <p>Phone No.: 9898988322</p>
+            </div>
+        </header>
+
+
+        <!-------Patient Details Section-------->
+        <div class="details-section mb-4">
+            <div class="details-row">
+                <div class="details-left">
+                    <p>Patient Name:</p>
+                    <span id="patientName"></span>
+                </div>
+                <div class="details-right">
+                    <p>Patient MRN:</p>
+                    <span id="patientMRN"></span>
+                </div>
+                <div class="details-left">
+                    <p>Age:</p>
+                    <span id="patientAge"></span>
+                </div>
+            </div>
+            <div class="details-row">
+                <div class="details-right">
+                    <p>Gender:</p>
+                    <span id="patientGender"></span>
+                </div>
+                <div class="details-left">
+                    <p>IP No.</p>
+                    <span id="assignedCounselor"></span>
+                </div>
+                <div class="details-right">
+                    <p>Collection Date:</p>
+                    <span id=""></span>
+                </div>
+            </div>
+            <div class="details-row">
+                <div class="details-right">
+                    <p>Receving Date:</p>
+                    <span id=""></span>
+                </div>
+                <div class="details-right">
+                    <p>Reporting Date:</p>
+                    <span id=""></span>
+                </div>
+                <div class="details-left">
+                    <p>Ref By:</p>
+                    <span id=""></span>
+                </div>
+            </div>
+            <div class="details-row">   
+                <div class="details-left">
+                    <p>Dept Ref No:</p>
+                    <span id=""></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="content">
+            <h3>HORMONE ASSAY</h3>
+            <p><strong>Test Name:</strong> AMH (Anti Mullerian Hormone)</p>
+            <p><strong>Investigation:</strong> AMH, Mullerian Inhibiting Substance</p>
+            <p><strong>Observed Value:</strong> 11.57 ng/ml</p>
+            <p><strong>Biological Reference Interval:</strong> 0.9-9.5 Refer Interpretation</p>
+    
+            <p style="font-size: 20px; font-weight: 500; margin-top: 30px;">Interpretation</p>
+            <p>AMH is a dimeric glycoprotein hormone belonging to the TGT-B family, produced by sertoli cells of testis in males and by ovarian follicular granulosa cells upto antral stage in females.</p>
+            <p><strong>In males:</strong> It is used to evaluate testicular presence and function in infants with intersex conditions or ambiguous genitalia, and to distinguish between cryptorchidism and anorchia in males.</p>
+            <p><strong>In females:</strong> During reproductive age, follicular AMH production begins during the primary stage, peaks in prenatal stage & has influence on follicular sensitivity to FHS which is important in selection for follicular dominance. AMH levels thus represent the pool or number of primordial follicles but not the quality of oocytes. AMH doesn’t vary significantly during the menstrual cycle and hence can be measured independently of day of cycle.</p>
+            <ul>
+                <li>Polycystic ovarian syndrome can elevate AMH 2 to 5 fold higher than age-specific reference ranges & predict anovulatory, irregular cycles. Ovarian tumors like Granulosa cell tumor are often associated with higher AMH.</li>
+                <li>Obese women are often associated with diminished ovarian reserve & can have 65% lower mean AMH levels than non-obese women.</li>
+                <li>A combination of Age, Ultrasound markers - ovarian volume and Antral follicle count, AMH level & FHS level are useful for optimal assessment of ovarian reserve studies in various fertility conditions.</li>
+            </ul>
+        </div>
+    
+        <div class="footer">
+            <div style="display: flex;">
+                <p style="margin-right: 700px;"><strong>Pathologist</strong></p>
+                <p><strong>Pathologist</strong></p>
+            </div>
+            <hr>
+            <p>* The report represents only an opinion. If clinical findings of the patient do not correlate with the opinion/findings, kindly recheck with the lab immediately.</p>
+            <p>* The blood and other samples received may be presumed to be of the patient named on the samples.</p>
+            <p>* This report is not valid for Medicolegal purposes.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
